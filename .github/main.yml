@@ -1,16 +1,21 @@
-name: Schedule Update Check
+name: MISIS Schedule Update
 
 on:
   schedule:
     - cron: '0 3 * * *'  # Ежедневно в 3:00 UTC (6:00 по Москве)
   workflow_dispatch:  # Ручной запуск
+  push:
+    branches: [ main ]
 
 jobs:
-  check-schedule:
+  update-schedule:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -18,7 +23,9 @@ jobs:
         python-version: '3.9'
     
     - name: Install dependencies
-      run: pip install -r requirements.txt
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
     
     - name: Run schedule parser
       run: python scripts/schedule_parser.py
@@ -26,9 +33,9 @@ jobs:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
     
-    - name: Commit and push if changed
+    - name: Commit and push if changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add schedule.ics last_hash.txt
-        git diff --cached --quiet || (git commit -m "Update schedule $(date +'%Y-%m-%d %H:%M')" && git push)
+        git diff --cached --quiet || (git commit -m "Auto-update schedule [skip ci]" && git push)
