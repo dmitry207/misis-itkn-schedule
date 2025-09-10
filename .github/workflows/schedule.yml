@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -25,7 +27,21 @@ jobs:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
     
-    - name: Show results
+    - name: Check for changes
+      id: check-changes
       run: |
-        echo "✅ Schedule parsing completed!"
+        git add schedule.ics last_hash.txt
+        if git diff --cached --quiet; then
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+          echo "✅ No changes to commit"
+        else
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          echo "📝 Changes detected!"
+          git status --short
+        fi
+    
+    - name: Show changes summary
+      run: |
+        echo "Changes detected: ${{ steps.check-changes.outputs.has_changes }}"
+        echo "Current files:"
         ls -la
