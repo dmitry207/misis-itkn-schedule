@@ -5,6 +5,9 @@ on:
     - cron: '0 3 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update-schedule:
     runs-on: ubuntu-latest
@@ -32,21 +35,31 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
     
     - name: Check for changes
-      id: check-changes
-      run: |
-        git add schedule.ics last_hash.txt
-        if git diff --cached --quiet; then
-          echo "has_changes=false" >> $GITHUB_OUTPUT
-          echo "No changes to commit"
-        else
-          echo "has_changes=true" >> $GITHUB_OUTPUT
-          echo "Changes detected"
-        fi
-    
-    - name: Commit changes
-      if: steps.check-changes.outputs.has_changes == 'true'
+      id: git-check
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -m "Update schedule [skip ci]"
-        echo "Changes committed locally"
+        git add schedule.ics last_hash.txt
+        if git diff --cached --quiet; then
+          echo "changes=false" >> $GITHUB_OUTPUT
+          echo "No changes to commit"
+        else
+          echo "changes=true" >> $GITHUB_OUTPUT
+          echo "Changes detected:"
+          git status --short
+        fi
+    
+    - name: Commit and Push changes
+      if: steps.git-check.outputs.changes == 'true'
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const { execSync } = require('child_process');
+          try {
+            execSync('git commit -m "Update schedule [skip ci]"');
+            execSync('git push');
+            console.log('✅ Changes committed and pushed successfully');
+          } catch (error) {
+            console.error('❌ Error committing changes:', error.message);
+          }
