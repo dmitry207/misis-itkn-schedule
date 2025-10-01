@@ -44,48 +44,7 @@ jobs:
       id: git-check
       run: |
         echo "📋 Checking for changes..."
-        
-        # Сохраняем хэш текущих файлов
-        if [ -f "schedule.ics" ]; then
-          current_schedule_hash=$(md5sum schedule.ics | cut -d' ' -f1)
-        else
-          current_schedule_hash=""
-        fi
-        
-        if [ -f "last_hash.txt" ]; then
-          current_last_hash=$(cat last_hash.txt)
-        else
-          current_last_hash=""
-        fi
-        
-        # Восстанавливаем файлы из git
-        git checkout HEAD -- schedule.ics last_hash.txt 2>/dev/null || true
-        
-        # Получаем хэш предыдущих версий
-        if [ -f "schedule.ics" ]; then
-          previous_schedule_hash=$(md5sum schedule.ics | cut -d' ' -f1)
-        else
-          previous_schedule_hash=""
-        fi
-        
-        if [ -f "last_hash.txt" ]; then
-          previous_last_hash=$(cat last_hash.txt)
-        else
-          previous_last_hash=""
-        fi
-        
-        # Восстанавливаем новые файлы
-        if [ -n "$current_schedule_hash" ]; then
-          echo "Restoring new schedule.ics"
-          echo "$current_schedule_hash" | md5sum -c --quiet 2>/dev/null || true
-        fi
-        
-        if [ -n "$current_last_hash" ]; then
-          echo "$current_last_hash" > last_hash.txt
-        fi
-        
-        # Проверяем изменения
-        git add schedule.ics last_hash.txt
+        git add -A
         if git diff --cached --quiet; then
           echo "has_changes=false" >> $GITHUB_OUTPUT
           echo "✅ No changes to commit"
@@ -93,15 +52,13 @@ jobs:
           echo "has_changes=true" >> $GITHUB_OUTPUT
           echo "📝 Changes detected!"
           git status --short
-          echo "Schedule hash: $current_schedule_hash (prev: $previous_schedule_hash)"
-          echo "Last hash: $current_last_hash (prev: $previous_last_hash)"
         fi
     
     - name: Commit changes
       if: steps.git-check.outputs.has_changes == 'true'
       run: |
         echo "💾 Committing changes..."
-        git commit -m "Update MISIS schedule for ББИ-25-2 [skip ci]"
+        git commit -m "Update MISIS schedule [skip ci]"
         echo "✅ Changes committed"
     
     - name: Push changes
@@ -111,11 +68,9 @@ jobs:
         git push
         echo "✅ Changes pushed to repository"
     
-    - name: Success message
+    - name: Final status
       run: |
-        echo "🎉 MISIS Schedule Update completed successfully!"
-        echo "📅 Schedule file: schedule.ics"
-        echo "🔐 Hash file: last_hash.txt"
-        echo "📝 Changes made: ${{ steps.git-check.outputs.has_changes }}"
-        echo "📊 Files in repository:"
+        echo "🎉 MISIS Schedule Update completed!"
+        echo "Changes: ${{ steps.git-check.outputs.has_changes }}"
+        echo "Files:"
         ls -la
