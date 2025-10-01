@@ -1,17 +1,15 @@
-name: MISIS Schedule Update
+name: MISIS Schedule Test
 
 on:
   workflow_dispatch:
 
 jobs:
-  update-schedule:
+  test-parser:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
     
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -19,29 +17,50 @@ jobs:
         python-version: '3.9'
     
     - name: Install dependencies
-      run: pip install -r requirements.txt
-    
-    - name: Run schedule parser
-      run: python scripts/schedule_parser.py
-      env:
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-    
-    - name: Check for changes
-      id: check-changes
       run: |
-        git add schedule.ics last_hash.txt
-        if git diff --cached --quiet; then
-          echo "has_changes=false" >> $GITHUB_OUTPUT
-          echo "✅ No changes to commit"
+        python -m pip install --upgrade pip
+        pip install ics pytz
+    
+    - name: List files before parser
+      run: |
+        echo "📁 Files BEFORE running parser:"
+        ls -la
+        echo "📁 Scripts directory:"
+        ls -la scripts/ || echo "No scripts directory"
+    
+    - name: Run test parser
+      run: |
+        echo "🐍 Running Python parser..."
+        python scripts/schedule_parser.py
+        echo "✅ Parser execution completed"
+    
+    - name: List files after parser
+      run: |
+        echo "📁 Files AFTER running parser:"
+        ls -la
+        echo "--- Checking specific files ---"
+        if [ -f "schedule.ics" ]; then
+          echo "✅ schedule.ics exists"
+          echo "First few lines:"
+          head -5 schedule.ics
         else
-          echo "has_changes=true" >> $GITHUB_OUTPUT
-          echo "📝 Changes detected!"
-          git status --short
+          echo "❌ schedule.ics does not exist"
+        fi
+        
+        if [ -f "last_hash.txt" ]; then
+          echo "✅ last_hash.txt exists"
+          echo "Content:"
+          cat last_hash.txt
+        else
+          echo "❌ last_hash.txt does not exist"
         fi
     
-    - name: Show changes summary
+    - name: Test file operations
       run: |
-        echo "Changes detected: ${{ steps.check-changes.outputs.has_changes }}"
-        echo "Current files:"
-        ls -la
+        echo "🧪 Testing file creation manually..."
+        echo "BEGIN:VCALENDAR" > test_schedule.ics
+        echo "VERSION:2.0" >> test_schedule.ics
+        echo "END:VCALENDAR" >> test_schedule.ics
+        echo "manual_test_hash" > test_hash.txt
+        echo "✅ Manual files created"
+        ls -la test_*
