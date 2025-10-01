@@ -2,8 +2,8 @@ name: MISIS Schedule Update
 
 on:
   schedule:
-    - cron: '0 3 * * *'
-  workflow_dispatch:
+    - cron: '0 3 * * *'  # Ежедневно в 3:00 UTC (6:00 по Москве)
+  workflow_dispatch:  # Ручной запуск
 
 permissions:
   contents: write
@@ -27,21 +27,64 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install ics pytz
+        pip install -r requirements.txt
     
     - name: Run schedule parser
       run: python scripts/schedule_parser.py
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
     
     - name: Configure Git
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        echo "🔧 Git configured"
     
     - name: Check for changes
       id: git-check
       run: |
         echo "📋 Checking for changes..."
+        
+        # Сохраняем хэш текущих файлов
+        if [ -f "schedule.ics" ]; then
+          current_schedule_hash=$(md5sum schedule.ics | cut -d' ' -f1)
+        else
+          current_schedule_hash=""
+        fi
+        
+        if [ -f "last_hash.txt" ]; then
+          current_last_hash=$(cat last_hash.txt)
+        else
+          current_last_hash=""
+        fi
+        
+        # Восстанавливаем файлы из git
+        git checkout HEAD -- schedule.ics last_hash.txt 2>/dev/null || true
+        
+        # Получаем хэш предыдущих версий
+        if [ -f "schedule.ics" ]; then
+          previous_schedule_hash=$(md5sum schedule.ics | cut -d' ' -f1)
+        else
+          previous_schedule_hash=""
+        fi
+        
+        if [ -f "last_hash.txt" ]; then
+          previous_last_hash=$(cat last_hash.txt)
+        else
+          previous_last_hash=""
+        fi
+        
+        # Восстанавливаем новые файлы
+        if [ -n "$current_schedule_hash" ]; then
+          echo "Restoring new schedule.ics"
+          echo "$current_schedule_hash" | md5sum -c --quiet 2>/dev/null || true
+        fi
+        
+        if [ -n "$current_last_hash" ]; then
+          echo "$current_last_hash" > last_hash.txt
+        fi
+        
+        # Проверяем изменения
         git add schedule.ics last_hash.txt
         if git diff --cached --quiet; then
           echo "has_changes=false" >> $GITHUB_OUTPUT
@@ -50,6 +93,8 @@ jobs:
           echo "has_changes=true" >> $GITHUB_OUTPUT
           echo "📝 Changes detected!"
           git status --short
+          echo "Schedule hash: $current_schedule_hash (prev: $previous_schedule_hash)"
+          echo "Last hash: $current_last_hash (prev: $previous_last_hash)"
         fi
     
     - name: Commit changes
@@ -72,3 +117,5 @@ jobs:
         echo "📅 Schedule file: schedule.ics"
         echo "🔐 Hash file: last_hash.txt"
         echo "📝 Changes made: ${{ steps.git-check.outputs.has_changes }}"
+        echo "📊 Files in repository:"
+        ls -la
