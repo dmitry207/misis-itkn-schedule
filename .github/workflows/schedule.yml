@@ -1,15 +1,23 @@
-name: MISIS Schedule Test
+name: MISIS Schedule Update
 
 on:
+  schedule:
+    - cron: '0 3 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  test-parser:
+  update-schedule:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -21,46 +29,46 @@ jobs:
         python -m pip install --upgrade pip
         pip install ics pytz
     
-    - name: List files before parser
-      run: |
-        echo "📁 Files BEFORE running parser:"
-        ls -la
-        echo "📁 Scripts directory:"
-        ls -la scripts/ || echo "No scripts directory"
+    - name: Run schedule parser
+      run: python scripts/schedule_parser.py
     
-    - name: Run test parser
+    - name: Configure Git
       run: |
-        echo "🐍 Running Python parser..."
-        python scripts/schedule_parser.py
-        echo "✅ Parser execution completed"
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        echo "🔧 Git configured"
     
-    - name: List files after parser
+    - name: Check for changes
+      id: git-check
       run: |
-        echo "📁 Files AFTER running parser:"
-        ls -la
-        echo "--- Checking specific files ---"
-        if [ -f "schedule.ics" ]; then
-          echo "✅ schedule.ics exists"
-          echo "First few lines:"
-          head -5 schedule.ics
+        echo "📋 Checking for changes..."
+        git add schedule.ics last_hash.txt
+        if git diff --cached --quiet; then
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+          echo "✅ No changes to commit"
         else
-          echo "❌ schedule.ics does not exist"
-        fi
-        
-        if [ -f "last_hash.txt" ]; then
-          echo "✅ last_hash.txt exists"
-          echo "Content:"
-          cat last_hash.txt
-        else
-          echo "❌ last_hash.txt does not exist"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          echo "📝 Changes detected!"
+          git status --short
         fi
     
-    - name: Test file operations
+    - name: Commit changes
+      if: steps.git-check.outputs.has_changes == 'true'
       run: |
-        echo "🧪 Testing file creation manually..."
-        echo "BEGIN:VCALENDAR" > test_schedule.ics
-        echo "VERSION:2.0" >> test_schedule.ics
-        echo "END:VCALENDAR" >> test_schedule.ics
-        echo "manual_test_hash" > test_hash.txt
-        echo "✅ Manual files created"
-        ls -la test_*
+        echo "💾 Committing changes..."
+        git commit -m "Update MISIS schedule for ББИ-25-2 [skip ci]"
+        echo "✅ Changes committed"
+    
+    - name: Push changes
+      if: steps.git-check.outputs.has_changes == 'true'
+      run: |
+        echo "🚀 Pushing changes..."
+        git push
+        echo "✅ Changes pushed to repository"
+    
+    - name: Success message
+      run: |
+        echo "🎉 MISIS Schedule Update completed successfully!"
+        echo "📅 Schedule file: schedule.ics"
+        echo "🔐 Hash file: last_hash.txt"
+        echo "📝 Changes made: ${{ steps.git-check.outputs.has_changes }}"
