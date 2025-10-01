@@ -2,11 +2,1731 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:ics.py - http://git.io/lLljaA
 BEGIN:VEVENT
-DESCRIPTION:Группа: ББИ-25-2
-DTEND:20250901T103500Z
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 13 (нечетная)
+DTEND:20251128T111500Z
+LOCATION:Б-734
+DTSTART:20251128T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:ecc402fa-edc4-438b-b760-357e186e41e5@ecc4.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 1 (нечетная)
+DTEND:20250905T073500Z
+LOCATION:А-308
+DTSTART:20250905T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:4c971267-6e71-40d4-b950-575b9ae8c2ba@4c97.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 9 (нечетная)
+DTEND:20251028T092500Z
+LOCATION:Л-746
+DTSTART:20251028T075000Z
+SUMMARY:История России (Лекционные)
+UID:c3cd0170-d96a-4b96-bd2e-e490b19505d9@c3cd.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Куренкова Т. В.\nНеделя: 5 (нечетная)
+DTEND:20251003T130500Z
+LOCATION:Л-812-УВЦ
+DTSTART:20251003T113000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:72e17d47-a5f5-4854-bd0f-9acff9875843@72e1.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 9 (нечетная)
+DTEND:20251027T073500Z
 LOCATION:Л-550
-DTSTART:20250901T090000Z
+DTSTART:20251027T060000Z
 SUMMARY:Математика (Лекционные)
-UID:a0571aaf-730c-44d7-9da6-fce976cc2a1c@a057.org
+UID:c14d775a-6e77-4ad7-89a4-cab7cca9f63b@c14d.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 5 (нечетная)
+DTEND:20251001T111500Z
+LOCATION:Л-556
+DTSTART:20251001T094000Z
+SUMMARY:Математика (Лекционные)
+UID:ff78cc2f-c477-4845-b90e-b46a6f41f7ac@ff78.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 14 (четная)
+DTEND:20251203T111500Z
+LOCATION:Л-556
+DTSTART:20251203T094000Z
+SUMMARY:Математика (Лекционные)
+UID:d54335bc-e9a0-4d8d-964d-12a8278817e9@d543.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 13 (нечетная)
+DTEND:20251124T111500Z
+LOCATION:Л-629
+DTSTART:20251124T094000Z
+SUMMARY:Математика (Практические)
+UID:32c519a7-afd0-4b75-a95a-c2093cec7882@32c5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 16 (четная)
+DTEND:20251217T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20251217T060000Z
+SUMMARY:Физическая культура
+UID:c51bc287-2065-4bbf-902d-cde1c912538e@c51b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 1 (нечетная)
+DTEND:20250904T092500Z
+LOCATION:Б-434
+DTSTART:20250904T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:eb0e5b93-b57d-46f9-8080-bf0e1c338e34@eb0e.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 7 (нечетная)
+DTEND:20251015T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20251015T060000Z
+SUMMARY:Физическая культура
+UID:c6b0066e-0198-49a8-b6b3-74d36045cfed@c6b0.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 1 (нечетная)
+DTEND:20250905T111500Z
+LOCATION:Б-734
+DTSTART:20250905T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:a7776634-5c5e-4307-843c-22dc38cf1eb3@a777.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 6 (четная)
+DTEND:20251006T130500Z
+LOCATION:Б-1135
+DTSTART:20251006T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:8f047010-1d42-458c-94d8-be71967485e3@8f04.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 16 (четная)
+DTEND:20251218T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251218T060000Z
+SUMMARY:Иностранный язык
+UID:c196488d-c000-43fb-a328-87f76d3f4846@c196.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 10 (четная)
+DTEND:20251103T073500Z
+LOCATION:Л-550
+DTSTART:20251103T060000Z
+SUMMARY:Математика (Лекционные)
+UID:c91d4721-b5c1-4bb3-a5f4-8ef4cbbcccdd@c91d.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 2 (четная)
+DTEND:20250911T111500Z
+LOCATION:Л-809-УВЦ
+DTSTART:20250911T094000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лабораторные)
+UID:1da9f4ce-110b-4303-b9c5-214f90dd84f4@1da9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 14 (четная)
+DTEND:20251204T111500Z
+LOCATION:Л-809-УВЦ
+DTSTART:20251204T094000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лабораторные)
+UID:d5dea604-2052-4ddb-9a88-bd816239b803@d5de.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 15 (нечетная)
+DTEND:20251212T111500Z
+LOCATION:Б-734
+DTSTART:20251212T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:c5646d55-b97d-4a22-9b6e-7e3abd58b377@c564.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 5 (нечетная)
+DTEND:20250929T111500Z
+LOCATION:Л-629
+DTSTART:20250929T094000Z
+SUMMARY:Математика (Практические)
+UID:50441dbc-f9ae-43a0-9f90-e0c7f61cc514@5044.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 13 (нечетная)
+DTEND:20251125T092500Z
+LOCATION:Л-746
+DTSTART:20251125T075000Z
+SUMMARY:История России (Лекционные)
+UID:4da3e9b6-fac0-4c75-9de5-bde512cf469a@4da3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 9 (нечетная)
+DTEND:20251027T111500Z
+LOCATION:Л-629
+DTSTART:20251027T094000Z
+SUMMARY:Математика (Практические)
+UID:708c3c45-61d5-4bb7-b2cd-4e5de708cdba@708c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 2 (четная)
+DTEND:20250911T092500Z
+LOCATION:Б-434
+DTSTART:20250911T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:d0f78b8e-da41-42a4-9081-452aa7335c30@d0f7.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 4 (четная)
+DTEND:20250925T111500Z
+LOCATION:Л-809-УВЦ
+DTSTART:20250925T094000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лабораторные)
+UID:ad9599fa-a994-450e-86f7-5f0db5817446@ad95.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Голубков М. В.\nНеделя: 7 (нечетная)
+DTEND:20251014T111500Z
+LOCATION:Л-850-УВЦ
+DTSTART:20251014T094000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:f09878c6-d9ee-4e45-b8af-794d953ea076@f098.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 8 (четная)
+DTEND:20251020T130500Z
+LOCATION:Б-1135
+DTSTART:20251020T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:431798af-cd10-4606-b9d1-8f7a6bc6a5b1@4317.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 2 (четная)
+DTEND:20250908T130500Z
+LOCATION:Б-1135
+DTSTART:20250908T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:8599e44e-dc0f-4516-8bd1-aad73a51ca8c@8599.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 15 (нечетная)
+DTEND:20251210T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20251210T060000Z
+SUMMARY:Физическая культура
+UID:f29034d7-ea69-475a-8c72-241714232555@f290.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 10 (четная)
+DTEND:20251107T111500Z
+LOCATION:Б-734
+DTSTART:20251107T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:7863d617-4c48-4e2d-810e-ea2d9159bc9f@7863.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 10 (четная)
+DTEND:20251104T130500Z
+LOCATION:Л-556
+DTSTART:20251104T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:3fabd66e-7720-4400-a7b1-bffe357e091e@3fab.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 1 (нечетная)
+DTEND:20250901T111500Z
+LOCATION:Л-629
+DTSTART:20250901T094000Z
+SUMMARY:Математика (Практические)
+UID:ee121267-b088-419d-a48b-84d11b350acd@ee12.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 6 (четная)
+DTEND:20251006T073500Z
+LOCATION:Л-550
+DTSTART:20251006T060000Z
+SUMMARY:Математика (Лекционные)
+UID:167d852c-12b2-481f-a269-cdc26f16be2c@167d.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 14 (четная)
+DTEND:20251203T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251203T113000Z
+SUMMARY:Иностранный язык
+UID:f7960b06-cbd3-4737-bb1f-bb6fcaac8555@f796.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 12 (четная)
+DTEND:20251117T111500Z
+LOCATION:Л-629
+DTSTART:20251117T094000Z
+SUMMARY:Математика (Практические)
+UID:337c2301-4e15-4bea-8fd4-c807917a618b@337c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 7 (нечетная)
+DTEND:20251013T111500Z
+LOCATION:Л-629
+DTSTART:20251013T094000Z
+SUMMARY:Математика (Практические)
+UID:5fe887f9-2310-44c3-bc16-d23175c89f31@5fe8.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 5 (нечетная)
+DTEND:20251003T073500Z
+LOCATION:А-308
+DTSTART:20251003T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:45d56276-18ab-4cf2-932a-b6dbef8939d8@45d5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 8 (четная)
+DTEND:20251021T092500Z
+LOCATION:Л-746
+DTSTART:20251021T075000Z
+SUMMARY:История России (Лекционные)
+UID:47c95b07-30e3-41e3-b6ac-8d6ac44641fd@47c9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 11 (нечетная)
+DTEND:20251113T092500Z
+LOCATION:Б-434
+DTSTART:20251113T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:6f96607d-b0cf-41ef-8b35-12265cada965@6f96.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Куренкова Т. В.\nНеделя: 13 (нечетная)
+DTEND:20251128T130500Z
+LOCATION:Л-812-УВЦ
+DTSTART:20251128T113000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:14e98689-18bd-44c7-82c1-b3dac1dc0194@14e9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 11 (нечетная)
+DTEND:20251112T111500Z
+LOCATION:Л-556
+DTSTART:20251112T094000Z
+SUMMARY:Математика (Лекционные)
+UID:1622eb66-b33e-4ecf-ac0a-cf8c45eecb7e@1622.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Голубков М. В.\nНеделя: 1 (нечетная)
+DTEND:20250902T111500Z
+LOCATION:Л-850-УВЦ
+DTSTART:20250902T094000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:9fd0cc18-bf0f-4ec9-b022-7920622db642@9fd0.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 6 (четная)
+DTEND:20251007T130500Z
+LOCATION:Л-556
+DTSTART:20251007T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:95dfaaa3-e989-4508-b14c-2a5719e6ee5c@95df.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 12 (четная)
+DTEND:20251120T111500Z
+LOCATION:Л-809-УВЦ
+DTSTART:20251120T094000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лабораторные)
+UID:55259561-b4e5-4fd3-b271-12f3afdcf329@5525.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 11 (нечетная)
+DTEND:20251112T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251112T113000Z
+SUMMARY:Иностранный язык
+UID:7b1842dd-232b-4a8b-b01a-771ef1e5f73b@7b18.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 7 (нечетная)
+DTEND:20251017T073500Z
+LOCATION:А-308
+DTSTART:20251017T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:7bc424ea-a7da-4e1a-9237-9dcf92a49f32@7bc4.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 9 (нечетная)
+DTEND:20251027T130500Z
+LOCATION:Б-1135
+DTSTART:20251027T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:3aa6dbe6-855f-402c-945b-1e038cdf6c3c@3aa6.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 9 (нечетная)
+DTEND:20251028T130500Z
+LOCATION:Л-556
+DTSTART:20251028T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:b7d1ca37-47e9-4b99-9c28-765c81ae1ba7@b7d1.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 6 (четная)
+DTEND:20251009T111500Z
+LOCATION:Л-809-УВЦ
+DTSTART:20251009T094000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лабораторные)
+UID:0c1c0e1b-8ef8-44ed-a580-a2a61bff1434@0c1c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 16 (четная)
+DTEND:20251215T111500Z
+LOCATION:Л-629
+DTSTART:20251215T094000Z
+SUMMARY:Математика (Практические)
+UID:86a95d80-5393-4277-8147-e2bf2eede4ea@86a9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 13 (нечетная)
+DTEND:20251126T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251126T113000Z
+SUMMARY:Иностранный язык
+UID:0b9e52cc-5a72-4f9f-adfc-690fe083aa76@0b9e.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 14 (четная)
+DTEND:20251204T092500Z
+LOCATION:Б-434
+DTSTART:20251204T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:e6a460be-91c9-43c6-88f9-aeafb28309a4@e6a4.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 1 (нечетная)
+DTEND:20250904T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20250904T060000Z
+SUMMARY:Иностранный язык
+UID:727721bb-f4a7-4da1-8ba5-9850e4edc799@7277.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 12 (четная)
+DTEND:20251120T092500Z
+LOCATION:Б-434
+DTSTART:20251120T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:f9ab7c7d-3146-4006-803c-4ea105f4686f@f9ab.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 11 (нечетная)
+DTEND:20251114T111500Z
+LOCATION:Б-734
+DTSTART:20251114T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:b79287d4-d539-4428-825e-8f479f071dc9@b792.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 16 (четная)
+DTEND:20251217T111500Z
+LOCATION:Л-556
+DTSTART:20251217T094000Z
+SUMMARY:Математика (Лекционные)
+UID:8da32e7a-1eba-4c0a-8c8a-0d33e807b09b@8da3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 11 (нечетная)
+DTEND:20251110T073500Z
+LOCATION:Л-550
+DTSTART:20251110T060000Z
+SUMMARY:Математика (Лекционные)
+UID:e23cadd9-dde3-49c0-91df-c7d56aa1dfdb@e23c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 2 (четная)
+DTEND:20250912T111500Z
+LOCATION:Б-734
+DTSTART:20250912T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:f54436ce-39b3-4c2a-b677-db3fccdc369d@f544.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 8 (четная)
+DTEND:20251020T073500Z
+LOCATION:Л-550
+DTSTART:20251020T060000Z
+SUMMARY:Математика (Лекционные)
+UID:4335a70a-ce94-4b36-99fd-39f0ff0c55c6@4335.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 10 (четная)
+DTEND:20251107T073500Z
+LOCATION:А-308
+DTSTART:20251107T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:23051daa-024d-4f7d-a043-e33f7daa047e@2305.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 16 (четная)
+DTEND:20251215T130500Z
+LOCATION:Б-1135
+DTSTART:20251215T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:de021597-c9e0-48e2-bf45-820143f187d7@de02.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 4 (четная)
+DTEND:20250926T111500Z
+LOCATION:Б-734
+DTSTART:20250926T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:004cdee8-d4b5-4113-a2ef-2a0137abe308@004c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 12 (четная)
+DTEND:20251119T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20251119T060000Z
+SUMMARY:Физическая культура
+UID:63938b3c-1ec3-4dfc-9e37-64742e90ca5e@6393.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 14 (четная)
+DTEND:20251203T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20251203T060000Z
+SUMMARY:Физическая культура
+UID:01aa2174-befd-41b1-b950-ed95fe88ee83@01aa.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 16 (четная)
+DTEND:20251219T073500Z
+LOCATION:А-308
+DTSTART:20251219T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:ac311358-c9f5-4231-9e68-a625a5aa36ee@ac31.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 12 (четная)
+DTEND:20251119T111500Z
+LOCATION:Л-556
+DTSTART:20251119T094000Z
+SUMMARY:Математика (Лекционные)
+UID:d85e8120-782a-434f-8c91-c242fe48db69@d85e.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 5 (нечетная)
+DTEND:20251001T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251001T113000Z
+SUMMARY:Иностранный язык
+UID:f7ac4068-414f-4f0f-a7a7-b76a7df717d9@f7ac.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 4 (четная)
+DTEND:20250926T073500Z
+LOCATION:А-308
+DTSTART:20250926T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:68de95d4-d066-4167-abd3-83b3e188f960@68de.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 14 (четная)
+DTEND:20251205T073500Z
+LOCATION:А-308
+DTSTART:20251205T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:5890a2dd-16f3-49a6-8110-f633ad264883@5890.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 6 (четная)
+DTEND:20251009T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251009T060000Z
+SUMMARY:Иностранный язык
+UID:9bfd96a6-e2b2-463c-b456-e33200c6bbd6@9bfd.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 11 (нечетная)
+DTEND:20251112T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20251112T060000Z
+SUMMARY:Физическая культура
+UID:4c7bbc6b-3ac3-486d-8c87-373292f4cc04@4c7b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 12 (четная)
+DTEND:20251121T073500Z
+LOCATION:А-308
+DTSTART:20251121T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:8308eddf-3a9d-4beb-a3e8-01f1b4d3c4f1@8308.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 13 (нечетная)
+DTEND:20251126T111500Z
+LOCATION:Л-556
+DTSTART:20251126T094000Z
+SUMMARY:Математика (Лекционные)
+UID:eca57955-704e-49db-95d2-1ad18600f0da@eca5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 9 (нечетная)
+DTEND:20251030T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251030T060000Z
+SUMMARY:Иностранный язык
+UID:4b1a0cad-d362-4f58-ad5f-9f1a40200690@4b1a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 15 (нечетная)
+DTEND:20251209T092500Z
+LOCATION:Л-746
+DTSTART:20251209T075000Z
+SUMMARY:История России (Лекционные)
+UID:c8dcd8c9-cdc3-4dd9-a6fb-fce265fcb352@c8dc.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 4 (четная)
+DTEND:20250922T130500Z
+LOCATION:Б-1135
+DTSTART:20250922T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:dae9e2d1-4b23-4e48-915c-0b18f7531a3d@dae9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 8 (четная)
+DTEND:20251022T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251022T113000Z
+SUMMARY:Иностранный язык
+UID:28907ed4-a256-48b0-88f2-ffc04b578618@2890.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 5 (нечетная)
+DTEND:20250929T073500Z
+LOCATION:Л-550
+DTSTART:20250929T060000Z
+SUMMARY:Математика (Лекционные)
+UID:14812a31-c036-45ad-9ccf-012a1c9314c8@1481.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 3 (нечетная)
+DTEND:20250919T111500Z
+LOCATION:Б-734
+DTSTART:20250919T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:4ec20039-da83-48ce-afb8-9382493fb1a9@4ec2.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 6 (четная)
+DTEND:20251010T111500Z
+LOCATION:Б-734
+DTSTART:20251010T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:b6d53eda-486e-4a6a-8b97-1048b5c0d765@b6d5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 4 (четная)
+DTEND:20250922T111500Z
+LOCATION:Л-629
+DTSTART:20250922T094000Z
+SUMMARY:Математика (Практические)
+UID:092941ba-c937-4508-b91e-197ca438bc9a@0929.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 13 (нечетная)
+DTEND:20251127T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251127T060000Z
+SUMMARY:Иностранный язык
+UID:937ae347-71fd-4192-9d92-8f7a3ba90bae@937a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 4 (четная)
+DTEND:20250925T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20250925T060000Z
+SUMMARY:Иностранный язык
+UID:01c9e30e-befd-42a4-9cba-a8563b779f66@01c9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 1 (нечетная)
+DTEND:20250902T130500Z
+LOCATION:Л-556
+DTSTART:20250902T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:e70169dd-8136-4351-8ac2-ad52402a20e0@e701.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 1 (нечетная)
+DTEND:20250903T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20250903T113000Z
+SUMMARY:Иностранный язык
+UID:ec7f56c6-f948-48c3-8fd1-4029afcb7fdd@ec7f.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 5 (нечетная)
+DTEND:20250929T130500Z
+LOCATION:Б-1135
+DTSTART:20250929T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:24901b38-34df-4216-b75a-82ec8f05c160@2490.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 8 (четная)
+DTEND:20251024T111500Z
+LOCATION:Б-734
+DTSTART:20251024T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:603c46fa-77fa-45dd-8a02-f7147247d273@603c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 6 (четная)
+DTEND:20251008T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20251008T060000Z
+SUMMARY:Физическая культура
+UID:ae8b969a-5335-4cf3-afc4-e6293c890ff8@ae8b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 13 (нечетная)
+DTEND:20251126T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20251126T060000Z
+SUMMARY:Физическая культура
+UID:4920e4f5-942a-48aa-b1c4-8604ddc4f1d0@4920.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 2 (четная)
+DTEND:20250910T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20250910T060000Z
+SUMMARY:Физическая культура
+UID:aaea79c2-894f-4f8b-a171-6489643578da@aaea.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 15 (нечетная)
+DTEND:20251208T130500Z
+LOCATION:Б-1135
+DTSTART:20251208T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:afb5b25c-dd03-43bb-8c17-c13f63526ce5@afb5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 6 (четная)
+DTEND:20251007T092500Z
+LOCATION:Л-746
+DTSTART:20251007T075000Z
+SUMMARY:История России (Лекционные)
+UID:126fd8e9-691e-4e54-b9c6-b1de568d6b78@126f.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 7 (нечетная)
+DTEND:20251016T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251016T060000Z
+SUMMARY:Иностранный язык
+UID:cf8fb037-6510-4ed6-97eb-c45b274a81a6@cf8f.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 6 (четная)
+DTEND:20251009T092500Z
+LOCATION:Б-434
+DTSTART:20251009T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:97c77ebe-3ec6-461c-b86c-a89d5b5a7afd@97c7.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 12 (четная)
+DTEND:20251117T130500Z
+LOCATION:Б-1135
+DTSTART:20251117T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:e32f4486-291a-4489-9150-c09d9df983da@e32f.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 11 (нечетная)
+DTEND:20251111T130500Z
+LOCATION:Л-556
+DTSTART:20251111T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:17ead64c-9ad2-41b0-806d-3bcfa8ba322c@17ea.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 12 (четная)
+DTEND:20251120T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251120T060000Z
+SUMMARY:Иностранный язык
+UID:85ed7d59-dd1b-47d6-8c2f-e8efdce0a275@85ed.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 4 (четная)
+DTEND:20250925T092500Z
+LOCATION:Б-434
+DTSTART:20250925T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:55c4ac2d-a075-4526-b7c4-ccfc980280c5@55c4.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 10 (четная)
+DTEND:20251105T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251105T113000Z
+SUMMARY:Иностранный язык
+UID:1680d008-0951-4015-8005-070ffda5a8c2@1680.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 8 (четная)
+DTEND:20251023T092500Z
+LOCATION:Б-434
+DTSTART:20251023T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:6b5597fa-711c-4a8d-b3da-59b6eb898078@6b55.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Голубков М. В.\nНеделя: 15 (нечетная)
+DTEND:20251209T111500Z
+LOCATION:Л-850-УВЦ
+DTSTART:20251209T094000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:d244b422-58e3-4fbe-9558-f3b0e01b797a@d244.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Куренкова Т. В.\nНеделя: 1 (нечетная)
+DTEND:20250905T130500Z
+LOCATION:Л-812-УВЦ
+DTSTART:20250905T113000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:26bb7a03-bb3d-4d21-9ee5-df339a7e2fea@26bb.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 14 (четная)
+DTEND:20251202T092500Z
+LOCATION:Л-746
+DTSTART:20251202T075000Z
+SUMMARY:История России (Лекционные)
+UID:0349d83d-e6b8-423d-856f-1a023fbbdb0f@0349.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Голубков М. В.\nНеделя: 3 (нечетная)
+DTEND:20250916T111500Z
+LOCATION:Л-850-УВЦ
+DTSTART:20250916T094000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:e2820e5f-eed2-468e-88f7-2903854c5f4a@e282.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 2 (четная)
+DTEND:20250912T073500Z
+LOCATION:А-308
+DTSTART:20250912T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:31d32371-8560-497d-9485-ddfe3633b584@31d3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 7 (нечетная)
+DTEND:20251013T073500Z
+LOCATION:Л-550
+DTSTART:20251013T060000Z
+SUMMARY:Математика (Лекционные)
+UID:e974a2bb-ae4f-40d2-b96e-55be742f90c9@e974.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 3 (нечетная)
+DTEND:20250919T073500Z
+LOCATION:А-308
+DTSTART:20250919T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:eac5f3ad-68c0-4a3a-b9d4-d55877a9ff1a@eac5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Куренкова Т. В.\nНеделя: 3 (нечетная)
+DTEND:20250919T130500Z
+LOCATION:Л-812-УВЦ
+DTSTART:20250919T113000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:086bbe51-d40f-41f4-a993-c41edcb3dbc3@086b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 8 (четная)
+DTEND:20251021T130500Z
+LOCATION:Л-556
+DTSTART:20251021T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:17a31e78-fb4a-42c0-8d63-9510a295c092@17a3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 5 (нечетная)
+DTEND:20251001T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20251001T060000Z
+SUMMARY:Физическая культура
+UID:7eea6e7b-6da7-4887-b012-0d28d733b3eb@7eea.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 8 (четная)
+DTEND:20251022T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20251022T060000Z
+SUMMARY:Физическая культура
+UID:b4709bcf-a951-4c55-9593-90eccb9a651c@b470.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 14 (четная)
+DTEND:20251204T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251204T060000Z
+SUMMARY:Иностранный язык
+UID:33e9e6e6-d44c-4562-9edc-3f5c31b2a72f@33e9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 3 (нечетная)
+DTEND:20250917T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20250917T060000Z
+SUMMARY:Физическая культура
+UID:2b08dd1d-a074-4395-a8a5-68aaa181c85d@2b08.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 6 (четная)
+DTEND:20251008T111500Z
+LOCATION:Л-556
+DTSTART:20251008T094000Z
+SUMMARY:Математика (Лекционные)
+UID:fee29226-d41b-464b-ae87-123ee0723b2b@fee2.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 16 (четная)
+DTEND:20251219T111500Z
+LOCATION:Б-734
+DTSTART:20251219T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:a37dbd35-e634-4fb0-9a9b-9c9e264dc35b@a37d.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Голубков М. В.\nНеделя: 5 (нечетная)
+DTEND:20250930T111500Z
+LOCATION:Л-850-УВЦ
+DTSTART:20250930T094000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:d73b7a54-d1e5-4882-8d86-bd5ea89b447b@d73b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 5 (нечетная)
+DTEND:20251003T111500Z
+LOCATION:Б-734
+DTSTART:20251003T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:0ff587f5-6d55-410f-b94f-07e5d1354232@0ff5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 11 (нечетная)
+DTEND:20251111T092500Z
+LOCATION:Л-746
+DTSTART:20251111T075000Z
+SUMMARY:История России (Лекционные)
+UID:5a5b5637-afde-421f-9b26-0e8fc91f9906@5a5b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 7 (нечетная)
+DTEND:20251016T092500Z
+LOCATION:Б-434
+DTSTART:20251016T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:72de61e7-c92c-4cf0-baa9-f21e28f6e48b@72de.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 4 (четная)
+DTEND:20250922T073500Z
+LOCATION:Л-550
+DTSTART:20250922T060000Z
+SUMMARY:Математика (Лекционные)
+UID:d9f3f217-0bd9-4e5a-8eb8-fe84f0b3e620@d9f3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 14 (четная)
+DTEND:20251205T111500Z
+LOCATION:Б-734
+DTSTART:20251205T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:766b148d-9606-440c-ae8e-9e46a3f32bc5@766b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 1 (нечетная)
+DTEND:20250902T092500Z
+LOCATION:Л-746
+DTSTART:20250902T075000Z
+SUMMARY:История России (Лекционные)
+UID:15b21775-b04d-4758-ad23-d8ecbd8e01c2@15b2.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 3 (нечетная)
+DTEND:20250915T130500Z
+LOCATION:Б-1135
+DTSTART:20250915T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:14c2a131-2a6c-4b99-b4e4-cbd04115fe20@14c2.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 14 (четная)
+DTEND:20251202T130500Z
+LOCATION:Л-556
+DTSTART:20251202T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:9e1e6c63-8a12-4698-a97f-d3c4c423f71f@9e1e.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 13 (нечетная)
+DTEND:20251124T130500Z
+LOCATION:Б-1135
+DTSTART:20251124T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:c00be9ca-21ba-4bf6-b764-f97107e165c0@c00b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 3 (нечетная)
+DTEND:20250916T130500Z
+LOCATION:Л-556
+DTSTART:20250916T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:ac489870-8eb2-4718-82be-1bad4eddf90a@ac48.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 4 (четная)
+DTEND:20250923T130500Z
+LOCATION:Л-556
+DTSTART:20250923T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:7ad248ad-45fa-4ff1-9f6b-544ea5657055@7ad2.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 3 (нечетная)
+DTEND:20250918T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20250918T060000Z
+SUMMARY:Иностранный язык
+UID:b03d97bf-f32b-4989-ba0d-14b5ba1f4286@b03d.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 4 (четная)
+DTEND:20250924T111500Z
+LOCATION:Л-556
+DTSTART:20250924T094000Z
+SUMMARY:Математика (Лекционные)
+UID:8735da37-0573-4a59-a858-281a1f7b937b@8735.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Голубков М. В.\nНеделя: 9 (нечетная)
+DTEND:20251028T111500Z
+LOCATION:Л-850-УВЦ
+DTSTART:20251028T094000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:dfe44825-0826-41b3-beeb-c38ab81336a3@dfe4.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 9 (нечетная)
+DTEND:20251029T111500Z
+LOCATION:Л-556
+DTSTART:20251029T094000Z
+SUMMARY:Математика (Лекционные)
+UID:d4d54e03-7ee0-40f3-ba0e-5a088c2cbf1d@d4d5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 16 (четная)
+DTEND:20251216T130500Z
+LOCATION:Л-556
+DTSTART:20251216T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:6991df75-0ca9-4998-a6f4-509f5bd654fc@6991.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 3 (нечетная)
+DTEND:20250915T111500Z
+LOCATION:Л-629
+DTSTART:20250915T094000Z
+SUMMARY:Математика (Практические)
+UID:aa0ee35f-44d7-4731-b22c-678436a1c99f@aa0e.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 16 (четная)
+DTEND:20251217T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251217T113000Z
+SUMMARY:Иностранный язык
+UID:459a8f7d-031c-4b57-92c6-0d084a4ad82d@459a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 2 (четная)
+DTEND:20250911T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20250911T060000Z
+SUMMARY:Иностранный язык
+UID:a001afbe-40cd-4f7c-8710-826e3edb5b0c@a001.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 16 (четная)
+DTEND:20251218T111500Z
+LOCATION:Л-809-УВЦ
+DTSTART:20251218T094000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лабораторные)
+UID:3f908889-1cea-4a80-b08c-1c11d73f4fb3@3f90.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 11 (нечетная)
+DTEND:20251110T111500Z
+LOCATION:Л-629
+DTSTART:20251110T094000Z
+SUMMARY:Математика (Практические)
+UID:a32f22b7-556a-486e-8da3-34bb04d8c5e2@a32f.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 3 (нечетная)
+DTEND:20250917T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20250917T113000Z
+SUMMARY:Иностранный язык
+UID:1c0e8262-17d1-4cc4-8b3c-7b93dddf9f0b@1c0e.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 4 (четная)
+DTEND:20250924T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20250924T113000Z
+SUMMARY:Иностранный язык
+UID:24df9aa4-5393-4dc8-8382-69cb2c222706@24df.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 10 (четная)
+DTEND:20251104T092500Z
+LOCATION:Л-746
+DTSTART:20251104T075000Z
+SUMMARY:История России (Лекционные)
+UID:cf1d9002-e95d-4bf9-b0ed-63b7fe033cc3@cf1d.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 6 (четная)
+DTEND:20251008T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251008T113000Z
+SUMMARY:Иностранный язык
+UID:d78b0e10-7a56-4a4a-8ac6-34af74941df5@d78b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 4 (четная)
+DTEND:20250924T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20250924T060000Z
+SUMMARY:Физическая культура
+UID:92b53ae7-0ec7-43b9-91f0-147df817db63@92b5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 5 (нечетная)
+DTEND:20251002T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251002T060000Z
+SUMMARY:Иностранный язык
+UID:1df299a5-0e10-4461-881a-ac98f04134a7@1df2.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 15 (нечетная)
+DTEND:20251211T092500Z
+LOCATION:Б-434
+DTSTART:20251211T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:0f6530c5-e7be-4b7e-a418-521799a6b532@0f65.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 7 (нечетная)
+DTEND:20251015T111500Z
+LOCATION:Л-556
+DTSTART:20251015T094000Z
+SUMMARY:Математика (Лекционные)
+UID:52be8d3e-ee6f-4836-bdc8-2aee7d5fbc3d@52be.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 6 (четная)
+DTEND:20251006T111500Z
+LOCATION:Л-629
+DTSTART:20251006T094000Z
+SUMMARY:Математика (Практические)
+UID:2a9b292b-e674-4575-8b78-00586a17340d@2a9b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 13 (нечетная)
+DTEND:20251128T073500Z
+LOCATION:А-308
+DTSTART:20251128T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:080a03d8-549b-4000-8568-7aef348b02b9@080a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 7 (нечетная)
+DTEND:20251014T092500Z
+LOCATION:Л-746
+DTSTART:20251014T075000Z
+SUMMARY:История России (Лекционные)
+UID:14c3713d-fca4-4f06-8f9e-04b39276d6e8@14c3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 1 (нечетная)
+DTEND:20250901T073500Z
+LOCATION:Л-550
+DTSTART:20250901T060000Z
+SUMMARY:Математика (Лекционные)
+UID:b3b5012c-4ed0-4f3f-80d4-061b146a6b01@b3b5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 2 (четная)
+DTEND:20250909T092500Z
+LOCATION:Л-746
+DTSTART:20250909T075000Z
+SUMMARY:История России (Лекционные)
+UID:7c32adcf-998e-480d-b5c4-8a410e6a3504@7c32.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Голубков М. В.\nНеделя: 13 (нечетная)
+DTEND:20251125T111500Z
+LOCATION:Л-850-УВЦ
+DTSTART:20251125T094000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:8d70c591-6088-4fc1-8216-b4209cb9b1ac@8d70.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 10 (четная)
+DTEND:20251105T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20251105T060000Z
+SUMMARY:Физическая культура
+UID:7d137a5f-90b6-4045-94f9-9259016fe2ad@7d13.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 12 (четная)
+DTEND:20251121T111500Z
+LOCATION:Б-734
+DTSTART:20251121T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:f3d9c955-42b8-47f3-882a-01f5c0937093@f3d9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 16 (четная)
+DTEND:20251215T073500Z
+LOCATION:Л-550
+DTSTART:20251215T060000Z
+SUMMARY:Математика (Лекционные)
+UID:3d70d4b5-fd31-4bd2-a86f-244969feb8b4@3d70.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 3 (нечетная)
+DTEND:20250918T092500Z
+LOCATION:Б-434
+DTSTART:20250918T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:df339cdc-619f-4a3c-96f4-57e79c899aee@df33.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 5 (нечетная)
+DTEND:20251002T092500Z
+LOCATION:Б-434
+DTSTART:20251002T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:d51f7d8f-8b61-4950-bd02-4592042236fa@d51f.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 3 (нечетная)
+DTEND:20250917T111500Z
+LOCATION:Л-556
+DTSTART:20250917T094000Z
+SUMMARY:Математика (Лекционные)
+UID:71924b36-3e26-49c3-afb5-81db2d911ef1@7192.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Куренкова Т. В.\nНеделя: 9 (нечетная)
+DTEND:20251031T130500Z
+LOCATION:Л-812-УВЦ
+DTSTART:20251031T113000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:52252aea-64bf-48f0-a987-69ce25fcb570@5225.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 15 (нечетная)
+DTEND:20251209T130500Z
+LOCATION:Л-556
+DTSTART:20251209T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:76ff8637-9e34-42d6-968f-d5951b0f975f@76ff.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 7 (нечетная)
+DTEND:20251015T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251015T113000Z
+SUMMARY:Иностранный язык
+UID:221b8d48-4d5f-4569-b7b6-cc7bcbefbf04@221b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 2 (четная)
+DTEND:20250910T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20250910T113000Z
+SUMMARY:Иностранный язык
+UID:084ec4f2-1355-45b9-b4a2-a022ca1aa91f@084e.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 11 (нечетная)
+DTEND:20251110T130500Z
+LOCATION:Б-1135
+DTSTART:20251110T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:eddfc84e-c6c8-4e48-8be1-9aa4db34a5b6@eddf.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 9 (нечетная)
+DTEND:20251031T111500Z
+LOCATION:Б-734
+DTSTART:20251031T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:92ede48d-a387-4a7d-b5e1-1b04cc8f5568@92ed.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 11 (нечетная)
+DTEND:20251114T073500Z
+LOCATION:А-308
+DTSTART:20251114T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:bf947c6f-dd91-4afa-9f5a-e4c7f920a056@bf94.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 9 (нечетная)
+DTEND:20251029T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20251029T060000Z
+SUMMARY:Физическая культура
+UID:7cfc0c79-2317-417f-9da0-891b9d2148de@7cfc.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Куренкова Т. В.\nНеделя: 7 (нечетная)
+DTEND:20251017T130500Z
+LOCATION:Л-812-УВЦ
+DTSTART:20251017T113000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:1da03373-9650-41cd-a7c0-91029da29b99@1da0.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 2 (четная)
+DTEND:20250908T111500Z
+LOCATION:Л-629
+DTSTART:20250908T094000Z
+SUMMARY:Математика (Практические)
+UID:fa902556-7369-486e-87e3-ab99169e8ae2@fa90.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 2 (четная)
+DTEND:20250909T130500Z
+LOCATION:Л-556
+DTSTART:20250909T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:34b02f2a-43df-4e0a-ade3-e884ebaf542a@34b0.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 15 (нечетная)
+DTEND:20251210T111500Z
+LOCATION:Л-556
+DTSTART:20251210T094000Z
+SUMMARY:Математика (Лекционные)
+UID:3ffe6d46-c58f-405e-ae59-e3b1639a5ead@3ffe.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 9 (нечетная)
+DTEND:20251031T073500Z
+LOCATION:А-308
+DTSTART:20251031T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:2396337a-fb51-4468-9b7a-1460f68422d1@2396.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 8 (четная)
+DTEND:20251024T073500Z
+LOCATION:А-308
+DTSTART:20251024T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:ca986685-b92f-4ba8-a2a0-4ef36637f94a@ca98.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 12 (четная)
+DTEND:20251119T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251119T113000Z
+SUMMARY:Иностранный язык
+UID:9cf31500-34e9-4490-a2e3-9f3a7e13500e@9cf3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 2 (четная)
+DTEND:20250908T073500Z
+LOCATION:Л-550
+DTSTART:20250908T060000Z
+SUMMARY:Математика (Лекционные)
+UID:22acbd96-10a2-426d-8502-1d7848ad7e00@22ac.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 15 (нечетная)
+DTEND:20251211T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251211T060000Z
+SUMMARY:Иностранный язык
+UID:68a8ca66-14b3-43a6-b2e3-29f4c417c5db@68a8.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 6 (четная)
+DTEND:20251010T073500Z
+LOCATION:А-308
+DTSTART:20251010T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:57311cda-7639-4816-950c-4023bdde0c1c@5731.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 5 (нечетная)
+DTEND:20250930T130500Z
+LOCATION:Л-556
+DTSTART:20250930T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:afb4fa55-7eba-4835-9208-972a894bcba0@afb4.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 9 (нечетная)
+DTEND:20251029T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251029T113000Z
+SUMMARY:Иностранный язык
+UID:ffb74737-f2ce-43bb-9f0f-b6cbeb951a92@ffb7.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 15 (нечетная)
+DTEND:20251210T130500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251210T113000Z
+SUMMARY:Иностранный язык
+UID:f095ded1-67ac-498c-9488-e1d358fe2c81@f095.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Куренкова Т. В.\nНеделя: 15 (нечетная)
+DTEND:20251212T130500Z
+LOCATION:Л-812-УВЦ
+DTSTART:20251212T113000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:8490f150-5232-4625-8be2-9721e3e0c0bd@8490.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 12 (четная)
+DTEND:20251118T092500Z
+LOCATION:Л-746
+DTSTART:20251118T075000Z
+SUMMARY:История России (Лекционные)
+UID:43e5a6a9-cdd6-4c5c-b005-ce412d8089ac@43e5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Аристов А. В.\nНеделя: 15 (нечетная)
+DTEND:20251212T073500Z
+LOCATION:А-308
+DTSTART:20251212T060000Z
+SUMMARY:Основы российской государственности (Лекционные)
+UID:6c913996-8db7-4d17-9686-c4a22fb9360c@6c91.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 7 (нечетная)
+DTEND:20251013T130500Z
+LOCATION:Б-1135
+DTSTART:20251013T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:fb65fa6d-09c0-42e0-9935-011b7a84f775@fb65.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Андреева О. В.\nНеделя: 7 (нечетная)
+DTEND:20251017T111500Z
+LOCATION:Б-734
+DTSTART:20251017T094000Z
+SUMMARY:Программирование и алгоритмизация (Лекционные)
+UID:4a75ecb5-322d-4785-be3e-27ebd0e65826@4a75.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 15 (нечетная)
+DTEND:20251208T073500Z
+LOCATION:Л-550
+DTSTART:20251208T060000Z
+SUMMARY:Математика (Лекционные)
+UID:1e16e5be-51a7-405d-a6ae-7049e9e6e46b@1e16.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 14 (четная)
+DTEND:20251201T130500Z
+LOCATION:Б-1135
+DTSTART:20251201T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:ff88d6d6-14e4-4f12-848d-4aa60b265561@ff88.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 13 (нечетная)
+DTEND:20251127T092500Z
+LOCATION:Б-434
+DTSTART:20251127T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:e8f618f9-4d69-485d-84e9-27d209eef568@e8f6.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 14 (четная)
+DTEND:20251201T111500Z
+LOCATION:Л-629
+DTSTART:20251201T094000Z
+SUMMARY:Математика (Практические)
+UID:163c10f2-8455-4f55-82a0-a7583d37a8fb@163c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 1 (нечетная)
+DTEND:20250901T130500Z
+LOCATION:Б-1135
+DTSTART:20250901T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:4dda41cb-de3c-4ccb-ba07-eced111eaf76@4dda.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 15 (нечетная)
+DTEND:20251208T111500Z
+LOCATION:Л-629
+DTSTART:20251208T094000Z
+SUMMARY:Математика (Практические)
+UID:a448a776-3511-441a-b8e9-305bfef3058c@a448.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Голубков М. В.\nНеделя: 11 (нечетная)
+DTEND:20251111T111500Z
+LOCATION:Л-850-УВЦ
+DTSTART:20251111T094000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:2fd08240-6273-47ac-b640-1d1ac1f241c8@2fd0.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 16 (четная)
+DTEND:20251218T092500Z
+LOCATION:Б-434
+DTSTART:20251218T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:ffb4d56a-ede4-41f6-8c8d-5184b86b558b@ffb4.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 16 (четная)
+DTEND:20251216T092500Z
+LOCATION:Л-746
+DTSTART:20251216T075000Z
+SUMMARY:История России (Лекционные)
+UID:807f563c-3a3c-445f-9be8-f89c7d4c5088@807f.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 11 (нечетная)
+DTEND:20251113T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251113T060000Z
+SUMMARY:Иностранный язык
+UID:8007bcf7-6bdf-4691-9735-af927a595714@8007.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 8 (четная)
+DTEND:20251023T111500Z
+LOCATION:Л-809-УВЦ
+DTSTART:20251023T094000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лабораторные)
+UID:1d82908d-6dfd-4f6a-8778-40403c144815@1d82.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 3 (нечетная)
+DTEND:20250916T092500Z
+LOCATION:Л-746
+DTSTART:20250916T075000Z
+SUMMARY:История России (Лекционные)
+UID:44f9d703-e91a-48cb-81d2-788d8c5c5213@44f9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 1 (нечетная)
+DTEND:20250903T111500Z
+LOCATION:Л-556
+DTSTART:20250903T094000Z
+SUMMARY:Математика (Лекционные)
+UID:30e205ad-ad96-4a75-a67c-278cfb180dd7@30e2.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 5 (нечетная)
+DTEND:20250930T092500Z
+LOCATION:Л-746
+DTSTART:20250930T075000Z
+SUMMARY:История России (Лекционные)
+UID:0a89b9f1-b451-4a78-b340-beca4a6458f9@0a89.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 8 (четная)
+DTEND:20251020T111500Z
+LOCATION:Л-629
+DTSTART:20251020T094000Z
+SUMMARY:Математика (Практические)
+UID:0eadf990-7dbe-4769-b046-1c9811f3375a@0ead.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 12 (четная)
+DTEND:20251117T073500Z
+LOCATION:Л-550
+DTSTART:20251117T060000Z
+SUMMARY:Математика (Лекционные)
+UID:25843ade-4ecf-4ad2-bb6a-3758f8f1702a@2584.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 10 (четная)
+DTEND:20251106T111500Z
+LOCATION:Л-809-УВЦ
+DTSTART:20251106T094000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лабораторные)
+UID:595dd174-10c1-4fe3-a265-95614f5e7dc8@595d.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Попова К. Д.\nНеделя: 10 (четная)
+DTEND:20251103T130500Z
+LOCATION:Б-1135
+DTSTART:20251103T113000Z
+SUMMARY:Введение в специальность (Практические)
+UID:b7b0f158-1ed4-403f-ab47-b95411720d1d@b7b0.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 8 (четная)
+DTEND:20251023T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251023T060000Z
+SUMMARY:Иностранный язык
+UID:50a9542d-8023-4688-a5e6-a6ad53f29845@50a9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 2 (четная)
+DTEND:20250910T111500Z
+LOCATION:Л-556
+DTSTART:20250910T094000Z
+SUMMARY:Математика (Лекционные)
+UID:dea2b76c-6c3c-4fd5-825e-90c7d592de4c@dea2.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 13 (нечетная)
+DTEND:20251124T073500Z
+LOCATION:Л-550
+DTSTART:20251124T060000Z
+SUMMARY:Математика (Лекционные)
+UID:6b09a01e-75bf-4094-ad15-c571b070e11e@6b09.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 10 (четная)
+DTEND:20251106T092500Z
+LOCATION:Б-434
+DTSTART:20251106T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:5b5e4971-60b8-4adc-87ea-c1824c1a47df@5b5e.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 8 (четная)
+DTEND:20251022T111500Z
+LOCATION:Л-556
+DTSTART:20251022T094000Z
+SUMMARY:Математика (Лекционные)
+UID:037f5944-30d8-4ad5-9449-72457a269136@037f.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 14 (четная)
+DTEND:20251201T073500Z
+LOCATION:Л-550
+DTSTART:20251201T060000Z
+SUMMARY:Математика (Лекционные)
+UID:ab0acd5b-330d-47f7-8d1a-af0e02694f6b@ab0a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 10 (четная)
+DTEND:20251105T111500Z
+LOCATION:Л-556
+DTSTART:20251105T094000Z
+SUMMARY:Математика (Лекционные)
+UID:ee075809-0064-4ac3-862d-3f45cdd57a3f@ee07.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 13 (нечетная)
+DTEND:20251125T130500Z
+LOCATION:Л-556
+DTSTART:20251125T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:b39a9886-8232-4d29-9760-44bfe9f34765@b39a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Белых П. В.\nНеделя: 9 (нечетная)
+DTEND:20251030T092500Z
+LOCATION:Б-434
+DTSTART:20251030T075000Z
+SUMMARY:Введение в специальность (Лекционные)
+UID:b0bda8a8-6151-4660-ad1c-5ba31553cb20@b0bd.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Булатов И. А.\nНеделя: 4 (четная)
+DTEND:20250923T092500Z
+LOCATION:Л-746
+DTSTART:20250923T075000Z
+SUMMARY:История России (Лекционные)
+UID:053b9a9b-27f7-4ccc-bcd1-14e24b244fa6@053b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 1 (нечетная)
+DTEND:20250903T073500Z
+LOCATION:Спортивный комплекс
+DTSTART:20250903T060000Z
+SUMMARY:Физическая культура
+UID:f4982e11-741a-4488-8c5e-e182cdb8e894@f498.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 3 (нечетная)
+DTEND:20250915T073500Z
+LOCATION:Л-550
+DTSTART:20250915T060000Z
+SUMMARY:Математика (Лекционные)
+UID:01db434e-56d5-46f1-af44-d684eca7f5e8@01db.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Куренкова Т. В.\nНеделя: 11 (нечетная)
+DTEND:20251114T130500Z
+LOCATION:Л-812-УВЦ
+DTSTART:20251114T113000Z
+SUMMARY:Программирование и алгоритмизация (Лабораторные)
+UID:5dc8ffe8-203c-4a4b-9a95-6e9dcc6d3114@5dc8.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 12 (четная)
+DTEND:20251118T130500Z
+LOCATION:Л-556
+DTSTART:20251118T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:cba5cb0e-7a28-442a-abae-6fff0863d7c0@cba5.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Буянов С. И.\nНеделя: 7 (нечетная)
+DTEND:20251014T130500Z
+LOCATION:Л-556
+DTSTART:20251014T113000Z
+SUMMARY:Вычислительные машины\, сети и системы (Лекционные)
+UID:8e3380b6-36eb-41f7-82e5-b5caab3de3b9@8e33.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Ногинова Л. Ю.\nНеделя: 10 (четная)
+DTEND:20251103T111500Z
+LOCATION:Л-629
+DTSTART:20251103T094000Z
+SUMMARY:Математика (Практические)
+UID:41c97a3e-9b56-45de-a7c0-be1f7f28a23b@41c9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nНеделя: 10 (четная)
+DTEND:20251106T073500Z
+LOCATION:Каф. ИЯКТ
+DTSTART:20251106T060000Z
+SUMMARY:Иностранный язык
+UID:10db3d1b-4bb3-41a9-87f9-83ced3a6fa5d@10db.org
 END:VEVENT
 END:VCALENDAR
