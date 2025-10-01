@@ -48,9 +48,9 @@ def get_latest_schedule_url():
             text = link.get_text().lower()
             
             # Проверяем по тексту ссылки или по URL
-            if any(keyword in text for keyword in ['иткн', 'институт компьютерных', 'компьютерных']):
+            if any(keyword in text for keyword in ['иткн', 'институт компьютерных', 'компьютерных', 'икн']):
                 itkn_links.append(link)
-            elif 'itkn' in href:
+            elif 'itkn' in href or 'ikn' in href:
                 itkn_links.append(link)
         
         if itkn_links:
@@ -158,43 +158,48 @@ def create_realistic_schedule():
         {"subject": "Программирование и алгоритмизация (Лабораторные)", "day": 4, "start_time": "14:30", "duration": 95, "location": "Л-812-УВЦ", "teacher": "Куренкова Т. В.", "weeks": "odd"},  # нечетные
     ]
     
-    for lesson in lessons:
-        event = Event()
-        event.name = lesson["subject"]
-        
-        # Вычисляем дату занятия
-        lesson_date = START_DATE + timedelta(days=lesson["day"])
-        
-        # Парсим время
-        hour, minute = map(int, lesson["start_time"].split(":"))
-        event.begin = TIMEZONE.localize(datetime(
-            lesson_date.year, lesson_date.month, lesson_date.day, 
-            hour, minute
-        ))
-        event.end = event.begin + timedelta(minutes=lesson["duration"])
-        
-        event.location = lesson["location"]
-        
-        # Описание
-        description = f"Группа: {GROUP_NAME}"
-        if lesson["teacher"]:
-            description += f"\nПреподаватель: {lesson['teacher']}"
-        
-        # Добавляем информацию о неделях
-        if lesson["weeks"] == "odd":
-            description += "\nНеделя: нечетная"
-        elif lesson["weeks"] == "even":
-            description += "\nНеделя: четная"
-        
-        event.description = description
-        
-        # Устанавливаем повторение на 16 недель (семестр)
-        # В реальной реализации здесь будет сложная логика для четных/нечетных недель
-        event.add_extra('RRULE', {'FREQ': 'WEEKLY', 'COUNT': 16})
-        
-        calendar.events.add(event)
+    events_created = 0
     
-    debug_print(f"✅ Создано {len(calendar.events)} событий")
+    for lesson in lessons:
+        # Создаем события для каждой недели семестра (16 недель)
+        for week in range(16):
+            # Пропускаем события для четных/нечетных недель если нужно
+            if lesson["weeks"] == "odd" and week % 2 == 1:  # пропускаем четные недели
+                continue
+            if lesson["weeks"] == "even" and week % 2 == 0:  # пропускаем нечетные недели
+                continue
+            
+            event = Event()
+            event.name = lesson["subject"]
+            
+            # Вычисляем дату занятия (начальная дата + день недели + недели)
+            lesson_date = START_DATE + timedelta(days=lesson["day"] + (week * 7))
+            
+            # Парсим время
+            hour, minute = map(int, lesson["start_time"].split(":"))
+            event.begin = TIMEZONE.localize(datetime(
+                lesson_date.year, lesson_date.month, lesson_date.day, 
+                hour, minute
+            ))
+            event.end = event.begin + timedelta(minutes=lesson["duration"])
+            
+            event.location = lesson["location"]
+            
+            # Описание
+            description = f"Группа: {GROUP_NAME}"
+            if lesson["teacher"]:
+                description += f"\nПреподаватель: {lesson['teacher']}"
+            
+            # Добавляем информацию о неделях
+            week_type = "нечетная" if week % 2 == 0 else "четная"
+            description += f"\nНеделя: {week + 1} ({week_type})"
+            
+            event.description = description
+            
+            calendar.events.add(event)
+            events_created += 1
+    
+    debug_print(f"✅ Создано {events_created} событий")
     return calendar
 
 def main():
@@ -245,8 +250,8 @@ def main():
 
 🏫 <b>Группа:</b> {GROUP_NAME}
 📅 <b>Начало семестра:</b> {START_DATE.strftime('%d.%m.%Y')}
-📚 <b>Занятий в расписании:</b> {len(ics_calendar.events)}
-🔗 <b>Ссылка на источник:</b> {schedule_url}
+📚 <b>Создано событий:</b> {len(ics_calendar.events)}
+🔗 <b>Источник:</b> {schedule_url}
 
 📅 <b>Расписание готово к использованию!</b>
 Добавьте в календарь ссылку:
@@ -263,8 +268,9 @@ https://raw.githubusercontent.com/{os.getenv('GITHUB_REPOSITORY', 'username/repo
     print(f"\n📊 Статистика:")
     print(f"   Событий создано: {len(ics_calendar.events)}")
     print(f"   Группа: {GROUP_NAME}")
-    print(f"   Начало: {START_DATE.strftime('%d.%m.%Y')}")
-    print(f"   Хэш файла: {current_hash[:16]}...")
+    print(f"   Начало семестра: {START_DATE.strftime('%d.%m.%Y')}")
+    print(f"   Актуальное расписание от: 01.10.2025")
+    print(f"   Хэш файла: {current_hash}")
 
 if __name__ == "__main__":
     main()
