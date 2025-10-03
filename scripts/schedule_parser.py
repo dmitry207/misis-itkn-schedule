@@ -7,11 +7,11 @@ import pytz
 from datetime import datetime, timedelta
 import os
 import hashlib
-import json
 
 # Конфигурация
 GROUP_NAME = "ББИ-25-2"
-START_DATE = datetime(2025, 9, 1)
+START_DATE = datetime(2025, 9, 1)  # Начало учебного года
+END_DATE = datetime(2026, 1, 31)   # Конец семестра
 TIMEZONE = pytz.timezone('Europe/Moscow')
 
 # Время пар в формате (начало, конец)
@@ -24,6 +24,9 @@ LESSON_TIMES = {
     6: ("18:00", "19:35"),
     7: ("19:40", "21:15")
 }
+
+# Русские названия дней недели для отладки
+DAYS_OF_WEEK = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
 
 def debug_print(message):
     """Функция для отладочной печати"""
@@ -55,22 +58,23 @@ def parse_xls_schedule(xls_content, group_name):
             debug_print("❌ Группа не найдена в файле")
             return []
         
-        # Ищем номера пар в колонке 1 (основные номера пар)
+        # Ищем номера пар в колонке 1
         lesson_numbers = []
         for row_idx in range(sheet.nrows):
             cell_value = str(sheet.cell_value(row_idx, 1)).strip()
             if cell_value.isdigit() and 1 <= int(cell_value) <= 7:
                 lesson_numbers.append((row_idx, int(cell_value)))
-                debug_print(f"🔍 Номер пары: строка {row_idx} = {cell_value}")
         
         if not lesson_numbers:
             debug_print("❌ Не найдены номера пар")
             return []
         
+        debug_print(f"✅ Найдено {len(lesson_numbers)} номеров пар")
+        
         # Извлекаем занятия
         lessons = []
-        day_counter = 0
-        lessons_per_day = 0
+        current_day = -1
+        last_lesson_number = 0
         
         for i, (lesson_row, lesson_number) in enumerate(lesson_numbers):
             if lesson_number in LESSON_TIMES:
@@ -82,29 +86,28 @@ def parse_xls_schedule(xls_content, group_name):
                 
                 if lesson_cell_value and lesson_cell_value != 'nan' and lesson_cell_value != '':
                     lesson_info = parse_lesson_cell_detailed(lesson_cell_value)
-                    if lesson_info and lesson_info["subject"] != "1":  # Игнорируем ячейки только с цифрой 1
-                        # Определяем день недели: сбрасываем счетчик когда начинаются новые пары с 1
-                        if lesson_number == 1:
-                            if i > 0:  # Не первый день
-                                day_counter += 1
-                            lessons_per_day = 0
-                        else:
-                            lessons_per_day += 1
+                    if lesson_info and lesson_info["subject"] != "1":
+                        # Определяем день недели: новый день начинается когда номер пары становится 1
+                        if lesson_number == 1 and (last_lesson_number != 1 or i == 0):
+                            current_day += 1
+                        
+                        last_lesson_number = lesson_number
                         
                         lesson = {
                             "subject": lesson_info["subject"],
-                            "day": day_counter,
+                            "day": current_day,  # 0=понедельник, 1=вторник и т.д.
                             "start_time": start_time,
                             "duration": duration,
                             "location": lesson_info.get("location", "Не указано"),
                             "teacher": lesson_info.get("teacher", "Не указан"),
-                            "weeks": "all",
                             "type": lesson_info.get("type", "Занятие")
                         }
                         lessons.append(lesson)
-                        debug_print(f"✅ {lesson['subject']} ({lesson['type']}) - {start_time} (день {day_counter}, пара {lesson_number})")
+                        
+                        day_name = DAYS_OF_WEEK[current_day] if current_day < len(DAYS_OF_WEEK) else f"День {current_day}"
+                        debug_print(f"✅ {lesson['subject']} - {day_name} {start_time} ({lesson['type']})")
         
-        debug_print(f"✅ Всего извлечено {len(lessons)} занятий за {day_counter + 1} дней")
+        debug_print(f"✅ Всего извлечено {len(lessons)} занятий за {current_day + 1} дней")
         return lessons
         
     except Exception as e:
@@ -118,8 +121,7 @@ def parse_lesson_cell_detailed(cell_text):
     if not cell_text or cell_text.strip() == '' or cell_text == 'nan':
         return None
     
-    text = cell_text.strip()
-    debug_print(f"🔍 Парсинг ячейки: '{text}'")
+    text = ' '.join(cell_text.strip().split())  # Убираем лишние пробелы и переносы
     
     lesson_info = {}
     
@@ -137,9 +139,6 @@ def parse_lesson_cell_detailed(cell_text):
         lesson_info["type"] = "Занятие"
         subject = text
     
-    # Обрабатываем переносы строк
-    subject = subject.replace('\n', ' ')
-    
     # Разделяем предмет и преподавателя
     parts = subject.split()
     
@@ -155,7 +154,6 @@ def parse_lesson_cell_detailed(cell_text):
             break
     
     if not teacher_found:
-        # Если преподаватель не найден, берем всю строку как предмет
         lesson_info["subject"] = subject
         lesson_info["teacher"] = "Не указан"
     
@@ -174,21 +172,27 @@ def calculate_duration(start_time, end_time):
     return int((end - start).total_seconds() / 60)
 
 def schedule_to_ical(lessons, group_name):
+    """Создает iCal календарь с повторяющимися событиями"""
     calendar = Calendar()
     
-    # Дни недели для отладки
-    days_of_week = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"]
+    # Добавляем метаданные для календаря
+    calendar.extra.append('X-WR-CALNAME:' + f'Расписание {group_name}')
+    calendar.extra.append('X-WR-CALDESC:' + f'Расписание занятий для группы {group_name}')
+    calendar.extra.append('X-WR-TIMEZONE:Europe/Moscow')
     
     for lesson in lessons:
-        # Определяем день недели (0 = понедельник)
-        lesson_date = START_DATE + timedelta(days=lesson["day"])
+        # Определяем дату первого занятия для этого дня недели
+        first_lesson_date = START_DATE + timedelta(days=lesson["day"])
         
+        # Парсим время начала
         start_time = datetime.strptime(lesson["start_time"], "%H:%M").time()
-        start_datetime = datetime.combine(lesson_date.date(), start_time)
+        start_datetime = datetime.combine(first_lesson_date.date(), start_time)
         start_datetime = TIMEZONE.localize(start_datetime)
         
+        # Добавляем продолжительность
         end_datetime = start_datetime + timedelta(minutes=lesson["duration"])
         
+        # Создаем событие
         event = Event()
         event.name = f"{lesson['subject']} ({lesson['type']})"
         event.begin = start_datetime
@@ -196,25 +200,28 @@ def schedule_to_ical(lessons, group_name):
         event.location = lesson["location"]
         event.description = f"Группа: {group_name}\nПреподаватель: {lesson['teacher']}\nТип: {lesson['type']}\nАудитория: {lesson['location']}"
         
-        if lesson["weeks"] == "all":
-            event.rrule = {"FREQ": "WEEKLY", "UNTIL": datetime(2026, 6, 30)}
+        # Настраиваем еженедельное повторение до конца семестра
+        event.rrule = {
+            "FREQ": "WEEKLY",
+            "UNTIL": END_DATE
+        }
         
         calendar.events.add(event)
         
-        debug_print(f"📅 Создано событие: {lesson['subject']} - {days_of_week[lesson['day']]} {start_time}")
+        day_name = DAYS_OF_WEEK[lesson["day"]] if lesson["day"] < len(DAYS_OF_WEEK) else f"День {lesson['day']}"
+        debug_print(f"📅 Создано событие: {lesson['subject']} - каждый {day_name} {start_time}")
     
-    debug_print(f"Создан iCal календарь с {len(calendar.events)} событиями")
+    debug_print(f"✅ Создан iCal календарь с {len(calendar.events)} повторяющимися событиями")
     return calendar
 
 def calculate_schedule_hash(lessons):
+    """Вычисляет хеш расписания для отслеживания изменений"""
     schedule_data = []
     for lesson in lessons:
         schedule_data.append(f"{lesson['subject']}_{lesson['day']}_{lesson['start_time']}_{lesson['location']}")
     
     schedule_str = ''.join(schedule_data)
     return hashlib.md5(schedule_str.encode()).hexdigest()
-
-# Остальные функции остаются без изменений (get_latest_schedule_url, download_schedule_file, send_telegram_notification, main)
 
 def get_latest_schedule_url():
     """Получает последнюю ссылку на расписание с сайта МИСИС"""
@@ -344,9 +351,13 @@ def main():
     
     calendar = schedule_to_ical(lessons, GROUP_NAME)
     
+    # Сохраняем календарь в файл
     with open('schedule.ics', 'w', encoding='utf-8') as f:
         f.writelines(calendar)
     
+    debug_print("✅ Календарь сохранен как schedule.ics")
+    
+    # Проверяем изменения
     current_hash = calculate_schedule_hash(lessons)
     
     previous_hash = ""
@@ -361,7 +372,7 @@ def main():
             f.write(current_hash)
         
         days_count = max(lesson["day"] for lesson in lessons) + 1 if lessons else 0
-        change_msg = f"📅 Расписание для {GROUP_NAME} обновлено!\n\nЗанятий: {len(lessons)}\nДней: {days_count}\nСсылка: {schedule_url}"
+        change_msg = f"📅 Расписание для {GROUP_NAME} обновлено!\n\nЗанятий: {len(lessons)}\nДней в неделе: {days_count}\nСсылка для подписки: https://raw.githubusercontent.com/dmitry207/misis-itkn-schedule/main/schedule.ics"
         send_telegram_notification(change_msg)
     else:
         debug_print("ℹ️ Изменений в расписании нет")
