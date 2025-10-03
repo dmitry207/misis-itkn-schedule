@@ -54,29 +54,30 @@ def analyze_file_structure(sheet):
     
     structure_data = {
         "dimensions": {"rows": sheet.nrows, "cols": sheet.ncols},
-        "first_10_rows": [],
-        "first_10_cols": []
+        "first_20_rows_all_cols": [],
+        "lesson_numbers_found": []
     }
     
-    # Анализируем первые 10 строк
-    for row_idx in range(min(10, sheet.nrows)):
+    # Анализируем первые 20 строк полностью
+    for row_idx in range(min(20, sheet.nrows)):
         row_data = {}
-        for col_idx in range(min(10, sheet.ncols)):
+        for col_idx in range(sheet.ncols):
             cell_value = str(sheet.cell_value(row_idx, col_idx)).strip()
             if cell_value and cell_value != 'nan':
                 row_data[f"col_{col_idx}"] = cell_value
         if row_data:
-            structure_data["first_10_rows"].append({f"row_{row_idx}": row_data})
+            structure_data["first_20_rows_all_cols"].append({f"row_{row_idx}": row_data})
     
-    # Анализируем первые 10 колонок более подробно
-    for col_idx in range(min(10, sheet.ncols)):
-        col_data = {}
-        for row_idx in range(min(20, sheet.nrows)):
+    # Ищем номера пар во всех колонках
+    for row_idx in range(sheet.nrows):
+        for col_idx in range(sheet.ncols):
             cell_value = str(sheet.cell_value(row_idx, col_idx)).strip()
-            if cell_value and cell_value != 'nan':
-                col_data[f"row_{row_idx}"] = cell_value
-        if col_data:
-            structure_data["first_10_cols"].append({f"col_{col_idx}": col_data})
+            if cell_value.isdigit() and 1 <= int(cell_value) <= 7:
+                structure_data["lesson_numbers_found"].append({
+                    "row": row_idx,
+                    "col": col_idx,
+                    "value": cell_value
+                })
     
     return structure_data
 
@@ -190,21 +191,24 @@ def parse_xls_schedule(xls_content, group_name):
         group_row, group_col, group_cell = group_positions[0]
         debug_print(f"🔍 Используем позицию: строка {group_row}, колонка {group_col}")
         
-        # Ищем номера пар в колонке 0
+        # Ищем номера пар во ВСЕХ колонках
         lesson_numbers = []
         for row_idx in range(sheet.nrows):
-            cell_value = str(sheet.cell_value(row_idx, 0)).strip()
-            if cell_value.isdigit() and 1 <= int(cell_value) <= 7:
-                lesson_numbers.append((row_idx, int(cell_value)))
-                debug_print(f"🔍 Номер пары: строка {row_idx} = {cell_value}")
+            for col_idx in range(sheet.ncols):
+                cell_value = str(sheet.cell_value(row_idx, col_idx)).strip()
+                if cell_value.isdigit() and 1 <= int(cell_value) <= 7:
+                    lesson_numbers.append((row_idx, col_idx, int(cell_value)))
+                    debug_print(f"🔍 Номер пары: строка {row_idx}, колонка {col_idx} = {cell_value}")
         
         if not lesson_numbers:
-            debug_print("❌ Не найдены номера пар в колонке 0")
+            debug_print("❌ Не найдены номера пар во всем файле")
             return []
+        
+        debug_print(f"✅ Найдено {len(lesson_numbers)} номеров пар")
         
         # Извлекаем занятия
         lessons = []
-        for lesson_row, lesson_number in lesson_numbers:
+        for lesson_row, lesson_col, lesson_number in lesson_numbers:
             if lesson_number in LESSON_TIMES:
                 start_time, end_time = LESSON_TIMES[lesson_number]
                 duration = calculate_duration(start_time, end_time)
@@ -216,7 +220,7 @@ def parse_xls_schedule(xls_content, group_name):
                     lesson_info = parse_lesson_cell_detailed(lesson_cell_value)
                     if lesson_info and lesson_info["subject"] != "1":  # Игнорируем ячейки только с цифрой 1
                         # Определяем день недели по относительной позиции
-                        day_of_week = determine_day_of_week(lesson_row, group_row, lesson_numbers)
+                        day_of_week = determine_day_of_week(lesson_row, lesson_numbers)
                         
                         lesson = {
                             "subject": lesson_info["subject"],
@@ -240,11 +244,11 @@ def parse_xls_schedule(xls_content, group_name):
         debug_print(f"Детали ошибки: {traceback.format_exc()}")
         return []
 
-def determine_day_of_week(lesson_row, group_row, lesson_numbers):
+def determine_day_of_week(lesson_row, lesson_numbers):
     """Определяет день недели на основе позиции занятия"""
     # Находим индекс текущего занятия в списке пар
-    lesson_indices = [row for row, num in lesson_numbers]
-    current_index = lesson_indices.index(lesson_row)
+    lesson_rows = [row for row, col, num in lesson_numbers]
+    current_index = lesson_rows.index(lesson_row)
     
     # Предполагаем, что 7 пар = 1 день
     day_of_week = current_index // 7
