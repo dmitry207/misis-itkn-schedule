@@ -1,12 +1,9 @@
-name: MISIS Schedule Update
+name: Update Schedule
 
 on:
   schedule:
-    - cron: '0 3 * * *'  # Ежедневно в 3:00 UTC (6:00 по Москве)
+    - cron: '0 6 * * 1'  # Каждый понедельник в 6 утра
   workflow_dispatch:  # Ручной запуск
-
-permissions:
-  contents: write
 
 jobs:
   update-schedule:
@@ -14,63 +11,30 @@ jobs:
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
-        fetch-depth: 0
         token: ${{ secrets.GITHUB_TOKEN }}
-    
+        
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.9'
-    
+        
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    
+        
     - name: Run schedule parser
-      run: python scripts/schedule_parser.py
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-    
-    - name: Configure Git
+      run: |
+        python scripts/schedule_parser.py
+        
+    - name: Commit and push if changed
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-    
-    - name: Check for changes
-      id: git-check
-      run: |
-        echo "📋 Checking for changes..."
-        git add -A
-        if git diff --cached --quiet; then
-          echo "has_changes=false" >> $GITHUB_OUTPUT
-          echo "✅ No changes to commit"
-        else
-          echo "has_changes=true" >> $GITHUB_OUTPUT
-          echo "📝 Changes detected!"
-          git status --short
-        fi
-    
-    - name: Commit changes
-      if: steps.git-check.outputs.has_changes == 'true'
-      run: |
-        echo "💾 Committing changes..."
-        git commit -m "Update MISIS schedule [skip ci]"
-        echo "✅ Changes committed"
-    
-    - name: Push changes
-      if: steps.git-check.outputs.has_changes == 'true'
-      run: |
-        echo "🚀 Pushing changes..."
-        git push
-        echo "✅ Changes pushed to repository"
-    
-    - name: Final status
-      run: |
-        echo "🎉 MISIS Schedule Update completed!"
-        echo "Changes: ${{ steps.git-check.outputs.has_changes }}"
-        echo "Files:"
-        ls -la
+        git add schedule.ics last_hash.txt
+        git diff --staged --quiet || (git commit -m "Auto-update schedule" && git push)
