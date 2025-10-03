@@ -2,68 +2,12 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:ics.py - http://git.io/lLljaA
 BEGIN:VEVENT
-DESCRIPTION:Преподаватель: культура (Практические)\nТип: Занятие
-DTEND:20250905T145500Z
-LOCATION:Не указано
-DTSTART:20250905T132000Z
-SUMMARY:Физическая - ББИ-25-2
-UID:600b29a0-bd45-436b-af42-76cfaea5c284@600b.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: (Лекционные) Ногинова Л. Ю.\nТип: Занятие
-DTEND:20250904T073500Z
-LOCATION:Не указано
-DTSTART:20250904T060000Z
-SUMMARY:Математика - ББИ-25-2
-UID:69143122-dc7e-46be-a136-02c0982bd501@6914.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: российской государственности (Практические) Бакирова Д. М.\nТип: Занятие
-DTEND:20250907T111500Z
-LOCATION:Не указано
-DTSTART:20250907T094000Z
-SUMMARY:Основы - ББИ-25-2
-UID:fc10bd40-2ad5-44d0-a790-43baae87fc98@fc10.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: России (Лекционные) Булатов И. А.\nТип: Занятие
-DTEND:20250904T181500Z
-LOCATION:Не указано
-DTSTART:20250904T164000Z
-SUMMARY:История - ББИ-25-2
-UID:324dd957-a488-426d-8887-19098ff69be3@324d.org
-END:VEVENT
-BEGIN:VEVENT
 DESCRIPTION:Преподаватель: в специальность (Лекционные) Белых П. В.\nТип: Занятие
 DTEND:20250902T145500Z
 LOCATION:Не указано
 DTSTART:20250902T132000Z
 SUMMARY:Введение - ББИ-25-2
-UID:8ea902df-47c4-4c5f-8a84-545febd92446@8ea9.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: язык (Практические)\nТип: Занятие
-DTEND:20250902T181500Z
-LOCATION:Не указано
-DTSTART:20250902T164000Z
-SUMMARY:Иностранный - ББИ-25-2
-UID:cffb5308-a40b-48d1-b273-6861d6224a7d@cffb.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: (Лекционные) Ногинова Л. Ю.\nТип: Занятие
-DTEND:20250905T073500Z
-LOCATION:Не указано
-DTSTART:20250905T060000Z
-SUMMARY:Математика - ББИ-25-2
-UID:539332ae-9b85-496c-9022-b7ea8edd334a@5393.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: язык (Практические)\nТип: Занятие
-DTEND:20250903T111500Z
-LOCATION:Не указано
-DTSTART:20250903T094000Z
-SUMMARY:Иностранный - ББИ-25-2
-UID:ccbb08f2-3f86-4ec2-b9fc-36a2f5bd0ea4@ccbb.org
+UID:ad84e710-c62d-4d30-baf1-6c4ceef7ac70@ad84.org
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Преподаватель: российской государственности (Практические) Бакирова Д. М.\nТип: Занятие
@@ -71,111 +15,7 @@ DTEND:20250901T125500Z
 LOCATION:Не указано
 DTSTART:20250901T112000Z
 SUMMARY:Основы - ББИ-25-2
-UID:31e7cebd-c338-4e3d-8c6c-0d8243cf880f@31e7.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: (Лекционные) Ногинова Л. Ю.\nТип: Занятие
-DTEND:20250906T145500Z
-LOCATION:Не указано
-DTSTART:20250906T132000Z
-SUMMARY:Математика - ББИ-25-2
-UID:6c172672-8a78-433d-a15d-efa41e0a98c2@6c17.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: российской государственности (Лекционные) Бакирова Д. М.\nТип: Занятие
-DTEND:20250905T181500Z
-LOCATION:Не указано
-DTSTART:20250905T164000Z
-SUMMARY:Основы - ББИ-25-2
-UID:98796bb4-0166-4157-99c6-c5327af86390@9879.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: п.г. Вычислительные машины\, сети и системы (Лабораторные) Буянов С. И.\nТип: Занятие
-DTEND:20250907T073500Z
-LOCATION:Не указано
-DTSTART:20250907T060000Z
-SUMMARY:1 - ББИ-25-2
-UID:e8d7548e-4915-4296-a3e4-5f4dc70b1453@e8d7.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: России (Практические) Зубарев И. Ю.\nТип: Занятие
-DTEND:20250906T073500Z
-LOCATION:Не указано
-DTSTART:20250906T060000Z
-SUMMARY:История - ББИ-25-2
-UID:b7cf39e2-300f-488c-acda-31bdbf48730b@b7cf.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: (Практические) Казанцев А. В.\nТип: Занятие
-DTEND:20250902T163500Z
-LOCATION:Не указано
-DTSTART:20250902T150000Z
-SUMMARY:Математика - ББИ-25-2
-UID:8a3612b5-9df4-413b-80ad-190571dd7910@8a36.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: (Практические) Владимиров А. А.\nТип: Занятие
-DTEND:20250907T181500Z
-LOCATION:Не указано
-DTSTART:20250907T164000Z
-SUMMARY:Математика - ББИ-25-2
-UID:b0883cd9-15ac-4fa8-bdab-07dfb62b1bd1@b088.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: России (Лекционные) Булатов И. А.\nТип: Занятие
-DTEND:20250904T111500Z
-LOCATION:Не указано
-DTSTART:20250904T094000Z
-SUMMARY:История - ББИ-25-2
-UID:5ef22800-6969-4253-940a-c1e3a7d0f964@5ef2.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: России (Лекционные) Булатов И. А.\nТип: Занятие
-DTEND:20250905T111500Z
-LOCATION:Не указано
-DTSTART:20250905T094000Z
-SUMMARY:История - ББИ-25-2
-UID:feb652ff-975f-4c58-9204-d965e2749c78@feb6.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: язык (Практические)\nТип: Занятие
-DTEND:20250903T181500Z
-LOCATION:Не указано
-DTSTART:20250903T164000Z
-SUMMARY:Иностранный - ББИ-25-2
-UID:88f123ce-1c1c-406f-a3e4-092099f432b2@88f1.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: (Практические) Казанцев А. В.\nТип: Занятие
-DTEND:20250901T163500Z
-LOCATION:Не указано
-DTSTART:20250901T150000Z
-SUMMARY:Математика - ББИ-25-2
-UID:2d05d93c-769a-46a7-b4eb-cc3a6928f5a1@2d05.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: (Практические) Владимиров А. А.\nТип: Занятие
-DTEND:20250906T181500Z
-LOCATION:Не указано
-DTSTART:20250906T164000Z
-SUMMARY:Математика - ББИ-25-2
-UID:d7ef35c4-b410-4064-a568-55e88a2af5dd@d7ef.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: (Практические) Владимиров А. А.\nТип: Занятие
-DTEND:20250902T091500Z
-LOCATION:Не указано
-DTSTART:20250902T074000Z
-SUMMARY:Математика - ББИ-25-2
-UID:96949093-ada7-4a85-bf70-131ae90cef63@9694.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: (Практические) Владимиров А. А.\nТип: Занятие
-DTEND:20250901T091500Z
-LOCATION:Не указано
-DTSTART:20250901T074000Z
-SUMMARY:Математика - ББИ-25-2
-UID:8fde4905-9727-40e3-8180-1b2415c78ac4@8fde.org
+UID:f6e5894a-9687-4aec-8269-f3c9aa4c3782@f6e5.org
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Преподаватель: Не указан\nТип: Занятие
@@ -183,15 +23,31 @@ DTEND:20250901T073500Z
 LOCATION:Не указано
 DTSTART:20250901T060000Z
 SUMMARY:1 - ББИ-25-2
-UID:eaeb6f23-f5e8-4ebc-9ff4-738efd1cee5c@eaeb.org
+UID:28b73153-af8e-431c-b4a7-e28648178180@28b7.org
 END:VEVENT
 BEGIN:VEVENT
-DESCRIPTION:Преподаватель: (Лекционные) Ногинова Л. Ю.\nТип: Занятие
-DTEND:20250907T145500Z
+DESCRIPTION:Преподаватель: (Практические) Владимиров А. А.\nТип: Занятие
+DTEND:20250902T091500Z
 LOCATION:Не указано
-DTSTART:20250907T132000Z
+DTSTART:20250902T074000Z
 SUMMARY:Математика - ББИ-25-2
-UID:935352a6-462c-480c-b269-23c6f652b432@9353.org
+UID:eb945a72-9ccc-44e1-a694-721a8eb29192@eb94.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: российской государственности (Лекционные) Бакирова Д. М.\nТип: Занятие
+DTEND:20250905T181500Z
+LOCATION:Не указано
+DTSTART:20250905T164000Z
+SUMMARY:Основы - ББИ-25-2
+UID:4e02a0a1-174d-4e91-ae8d-aae045f24bd9@4e02.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: язык (Практические)\nТип: Занятие
+DTEND:20250903T181500Z
+LOCATION:Не указано
+DTSTART:20250903T164000Z
+SUMMARY:Иностранный - ББИ-25-2
+UID:e17edcfb-941f-4f38-a095-8841010c0ce8@e17e.org
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Преподаватель: в специальность (Практические) Степанов Н. А.\nТип: Занятие
@@ -199,7 +55,135 @@ DTEND:20250906T111500Z
 LOCATION:Не указано
 DTSTART:20250906T094000Z
 SUMMARY:Введение - ББИ-25-2
-UID:f5190c85-0679-47b6-a086-5e5356aa9c9c@f519.org
+UID:a6e923ec-df2e-46fa-a1f1-de347d8e8e61@a6e9.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: (Лекционные) Ногинова Л. Ю.\nТип: Занятие
+DTEND:20250905T073500Z
+LOCATION:Не указано
+DTSTART:20250905T060000Z
+SUMMARY:Математика - ББИ-25-2
+UID:89cc9ba1-fa18-4289-a5eb-0266ae4a7237@89cc.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: (Практические) Казанцев А. В.\nТип: Занятие
+DTEND:20250902T163500Z
+LOCATION:Не указано
+DTSTART:20250902T150000Z
+SUMMARY:Математика - ББИ-25-2
+UID:1b3b0d2b-7c59-4e6a-af02-0ca0d57aa54b@1b3b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: (Лекционные) Ногинова Л. Ю.\nТип: Занятие
+DTEND:20250904T073500Z
+LOCATION:Не указано
+DTSTART:20250904T060000Z
+SUMMARY:Математика - ББИ-25-2
+UID:a7255760-f3d7-4986-ae7d-cfab021d7451@a725.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: (Лекционные) Ногинова Л. Ю.\nТип: Занятие
+DTEND:20250906T145500Z
+LOCATION:Не указано
+DTSTART:20250906T132000Z
+SUMMARY:Математика - ББИ-25-2
+UID:3837d62e-3ad7-42ca-acd9-3d2f10668627@3837.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: (Лекционные) Ногинова Л. Ю.\nТип: Занятие
+DTEND:20250907T145500Z
+LOCATION:Не указано
+DTSTART:20250907T132000Z
+SUMMARY:Математика - ББИ-25-2
+UID:83f3f9e0-3b61-40f7-8f75-951f504080fb@83f3.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: России (Лекционные) Булатов И. А.\nТип: Занятие
+DTEND:20250904T111500Z
+LOCATION:Не указано
+DTSTART:20250904T094000Z
+SUMMARY:История - ББИ-25-2
+UID:ff1b3032-312a-46b2-8cf1-5879200efd35@ff1b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: язык (Практические)\nТип: Занятие
+DTEND:20250903T111500Z
+LOCATION:Не указано
+DTSTART:20250903T094000Z
+SUMMARY:Иностранный - ББИ-25-2
+UID:0a3eb712-1a36-4d01-99ea-5c8ae2d6b98a@0a3e.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: (Практические) Владимиров А. А.\nТип: Занятие
+DTEND:20250906T181500Z
+LOCATION:Не указано
+DTSTART:20250906T164000Z
+SUMMARY:Математика - ББИ-25-2
+UID:315cd21e-ee0e-4ea2-8e75-420faa3569e8@315c.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: культура (Практические)\nТип: Занятие
+DTEND:20250905T145500Z
+LOCATION:Не указано
+DTSTART:20250905T132000Z
+SUMMARY:Физическая - ББИ-25-2
+UID:6430558d-ada3-451c-9e6e-9819e59ee252@6430.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: российской государственности (Практические) Бакирова Д. М.\nТип: Занятие
+DTEND:20250907T111500Z
+LOCATION:Не указано
+DTSTART:20250907T094000Z
+SUMMARY:Основы - ББИ-25-2
+UID:8413a06a-c434-4816-8072-f0a601571cf8@8413.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: России (Лекционные) Булатов И. А.\nТип: Занятие
+DTEND:20250904T181500Z
+LOCATION:Не указано
+DTSTART:20250904T164000Z
+SUMMARY:История - ББИ-25-2
+UID:cc063003-56ea-4377-9f62-8a2d19e88b52@cc06.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: язык (Практические)\nТип: Занятие
+DTEND:20250902T181500Z
+LOCATION:Не указано
+DTSTART:20250902T164000Z
+SUMMARY:Иностранный - ББИ-25-2
+UID:d8c22475-e66e-4548-8469-033614036654@d8c2.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: (Практические) Владимиров А. А.\nТип: Занятие
+DTEND:20250907T181500Z
+LOCATION:Не указано
+DTSTART:20250907T164000Z
+SUMMARY:Математика - ББИ-25-2
+UID:dd244a88-1621-4b5b-9ca4-439604b90463@dd24.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: России (Лекционные) Булатов И. А.\nТип: Занятие
+DTEND:20250905T111500Z
+LOCATION:Не указано
+DTSTART:20250905T094000Z
+SUMMARY:История - ББИ-25-2
+UID:9de41102-ce43-4fd4-87ce-581275325678@9de4.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: п.г. Вычислительные машины\, сети и системы (Лабораторные) Буянов С. И.\nТип: Занятие
+DTEND:20250907T073500Z
+LOCATION:Не указано
+DTSTART:20250907T060000Z
+SUMMARY:1 - ББИ-25-2
+UID:1ffcffb9-d7f5-4698-9a65-05de85060f9b@1ffc.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: России (Практические) Зубарев И. Ю.\nТип: Занятие
+DTEND:20250906T073500Z
+LOCATION:Не указано
+DTSTART:20250906T060000Z
+SUMMARY:История - ББИ-25-2
+UID:473a99c3-6563-418e-b7d8-602a74f7ed4d@473a.org
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Преподаватель: культура (Практические)\nТип: Занятие
@@ -207,6 +191,22 @@ DTEND:20250904T145500Z
 LOCATION:Не указано
 DTSTART:20250904T132000Z
 SUMMARY:Физическая - ББИ-25-2
-UID:4f9df82d-ebed-4a6c-89ea-03798087a938@4f9d.org
+UID:9b02d137-3da6-4a43-aaef-1048e04dbacc@9b02.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: (Практические) Владимиров А. А.\nТип: Занятие
+DTEND:20250901T091500Z
+LOCATION:Не указано
+DTSTART:20250901T074000Z
+SUMMARY:Математика - ББИ-25-2
+UID:d09e1f62-2ee0-421c-999c-985696a001af@d09e.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Преподаватель: (Практические) Казанцев А. В.\nТип: Занятие
+DTEND:20250901T163500Z
+LOCATION:Не указано
+DTSTART:20250901T150000Z
+SUMMARY:Математика - ББИ-25-2
+UID:bcaa7389-0468-4688-b189-018fa6aca258@bcaa.org
 END:VEVENT
 END:VCALENDAR
