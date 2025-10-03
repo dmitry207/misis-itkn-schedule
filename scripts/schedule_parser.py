@@ -7,11 +7,24 @@ import pytz
 from datetime import datetime, timedelta
 import os
 import hashlib
+import pandas as pd
+from io import BytesIO
 
 # Конфигурация
 GROUP_NAME = "ББИ-25-2"
 START_DATE = datetime(2025, 9, 1)
 TIMEZONE = pytz.timezone('Europe/Moscow')
+
+# Время пар в формате (начало, конец) в минутах от 0:00
+LESSON_TIMES = {
+    1: ("9:00", "10:35"),
+    2: ("10:40", "12:15"), 
+    3: ("12:40", "14:15"),
+    4: ("14:20", "15:55"),
+    5: ("16:20", "17:55"),
+    6: ("18:00", "19:35"),
+    7: ("19:40", "21:15")
+}
 
 def debug_print(message):
     """Функция для отладочной печати"""
@@ -31,48 +44,66 @@ def get_latest_schedule_url():
         soup = BeautifulSoup(response.content, 'html.parser')
         debug_print("Страница расписания загружена")
         
-        # Ищем все ссылки на XLS файлы
-        all_links = soup.find_all('a', href=re.compile(r'\.xls$'))
-        debug_print(f"Найдено {len(all_links)} XLS ссылок")
+        # Ищем блок "Институт компьютерных наук"
+        itkn_block = None
+        for element in soup.find_all(['div', 'p', 'li']):
+            text = element.get_text().lower()
+            if any(keyword in text for keyword in ['институт компьютерных наук', 'иткн', 'икн']):
+                itkn_block = element
+                debug_print("Найден блок ИТКН")
+                break
         
-        # Выводим все найденные ссылки для отладки
-        for i, link in enumerate(all_links):
-            href = link.get('href', '')
-            text = link.get_text().strip()
-            debug_print(f"Ссылка {i+1}: '{text}' -> {href}")
-        
-        # Ищем ссылки связанные с ИТКН
+        # Ищем все ссылки на XLS файлы в блоке ИТКН
         itkn_links = []
-        for link in all_links:
-            href = link.get('href', '').lower()
-            text = link.get_text().lower()
+        if itkn_block:
+            itkn_links = itkn_block.find_all('a', href=re.compile(r'\.xls$'))
+            debug_print(f"Найдено {len(itkn_links)} XLS ссылок в блоке ИТКН")
+        
+        # Если в блоке ИТКН нет ссылок, ищем по всей странице
+        if not itkn_links:
+            debug_print("В блоке ИТКН нет ссылок, ищу по всей странице")
+            all_links = soup.find_all('a', href=re.compile(r'\.xls$'))
             
-            # Проверяем по тексту ссылки или по URL
-            if any(keyword in text for keyword in ['иткн', 'институт компьютерных', 'компьютерных', 'икн']):
-                itkn_links.append(link)
-            elif 'itkn' in href or 'ikn' in href:
-                itkn_links.append(link)
+            # Фильтруем ссылки по ключевым словам
+            for link in all_links:
+                href = link.get('href', '').lower()
+                text = link.get_text().lower()
+                
+                if any(keyword in text for keyword in ['иткн', 'институт компьютерных', 'компьютерных', 'икн']):
+                    itkn_links.append(link)
+                elif 'itkn' in href or 'ikn' in href:
+                    itkn_links.append(link)
+        
+        # Сортируем ссылки по дате в названии (новые первыми)
+        itkn_links.sort(key=lambda x: extract_date_from_filename(x.get('href', '')), reverse=True)
         
         if itkn_links:
-            # Берем первую ссылку (обычно самая актуальная)
             latest_link = itkn_links[0]
             schedule_url = urljoin(url, latest_link['href'])
-            debug_print(f"✅ Найдена ИТКН ссылка: {schedule_url}")
+            link_text = latest_link.get_text().strip()
+            debug_print(f"✅ Найдена ИТКН ссылка: {link_text} -> {schedule_url}")
             return schedule_url
         
-        # Если не нашли ИТКН ссылки, используем первую XLS ссылку
+        # Если не нашли ИТКН ссылки, используем первую XLS ссылку на странице
+        all_links = soup.find_all('a', href=re.compile(r'\.xls$'))
         if all_links:
             schedule_url = urljoin(url, all_links[0]['href'])
             debug_print(f"⚠️ ИТКН ссылка не найдена, использую первую XLS: {schedule_url}")
             return schedule_url
         
-        # Если вообще нет ссылок, используем прямую
-        debug_print("❌ Ссылки не найдены, использую тестовую")
-        return "https://misis.ru/files/-/d316e628c9cd38657184fa33d8f5f5ea/itkn-250909.xls"
+        debug_print("❌ Ссылки не найдены")
+        return None
         
     except Exception as e:
         debug_print(f"Ошибка при получении ссылки: {e}")
-        return "https://misis.ru/files/-/d316e628c9cd38657184fa33d8f5f5ea/itkn-250909.xls"
+        return None
+
+def extract_date_from_filename(filename):
+    """Извлекает дату из имени файла для сортировки"""
+    date_match = re.search(r'(\d{6})', filename)
+    if date_match:
+        return date_match.group(1)
+    return "000000"
 
 def download_schedule_file(url):
     """Скачивает файл расписания"""
@@ -84,7 +115,6 @@ def download_schedule_file(url):
         response = requests.get(url, timeout=30, headers=headers)
         response.raise_for_status()
         
-        # Проверяем что файл не пустой
         if len(response.content) < 100:
             debug_print("❌ Файл слишком маленький, возможно ошибка")
             return None
@@ -94,6 +124,197 @@ def download_schedule_file(url):
     except Exception as e:
         debug_print(f"❌ Ошибка при скачивании файла: {e}")
         return None
+
+def parse_xls_schedule(xls_content, group_name):
+    """Парсит XLS файл и извлекает расписание для указанной группы"""
+    try:
+        debug_print(f"Парсинг XLS для группы {group_name}")
+        
+        xls_file = BytesIO(xls_content)
+        
+        # Пробуем разные движки для чтения
+        try:
+            df = pd.read_excel(xls_file, engine='openpyxl', header=None)
+        except:
+            try:
+                df = pd.read_excel(xls_file, engine='xlrd', header=None)
+            except Exception as e:
+                debug_print(f"❌ Не удалось прочитать XLS файл: {e}")
+                return []
+        
+        debug_print(f"Файл прочитан, размер: {df.shape}")
+        
+        # Ищем строку с заголовками (где есть номер пары)
+        header_row = find_header_row(df)
+        if header_row is None:
+            debug_print("❌ Не найдена строка с заголовками расписания")
+            return []
+        
+        # Ищем колонку с нашей группой
+        group_col = find_group_column(df, group_name, header_row)
+        if group_col is None:
+            debug_print(f"❌ Группа {group_name} не найдена в файле")
+            return []
+        
+        debug_print(f"Найдена группа в колонке {group_col}")
+        return extract_lessons_from_schedule(df, group_col, header_row)
+        
+    except Exception as e:
+        debug_print(f"❌ Ошибка при парсинге XLS: {e}")
+        return []
+
+def find_header_row(df):
+    """Находит строку с заголовками (номера пар)"""
+    for idx, row in df.iterrows():
+        for cell in row:
+            if isinstance(cell, str) and any(str(i) in str(cell) for i in range(1, 8)):
+                return idx
+    return None
+
+def find_group_column(df, group_name, header_row):
+    """Находит колонку с указанной группой"""
+    # Ищем в строке с заголовками и нескольких следующих строках
+    for row_offset in range(0, 5):
+        current_row = header_row + row_offset
+        if current_row >= len(df):
+            break
+            
+        for col_idx, cell in enumerate(df.iloc[current_row]):
+            if group_name in str(cell):
+                return col_idx
+    return None
+
+def extract_lessons_from_schedule(df, group_col, header_row):
+    """Извлекает занятия из расписания"""
+    lessons = []
+    
+    # Проходим по строкам с занятиями (после заголовка)
+    for row_idx in range(header_row + 1, len(df)):
+        row = df.iloc[row_idx]
+        
+        # Пропускаем пустые строки
+        if pd.isna(row[group_col]) or str(row[group_col]).strip() == '':
+            continue
+            
+        lesson_info = parse_lesson_cell(str(row[group_col]))
+        if lesson_info:
+            # Определяем день недели по позиции строки
+            day_of_week = (row_idx - header_row - 1) % 7
+            
+            # Определяем номер пары по позиции в дне
+            lesson_number = (row_idx - header_row - 1) // 7 + 1
+            
+            if lesson_number in LESSON_TIMES:
+                start_time, end_time = LESSON_TIMES[lesson_number]
+                duration = calculate_duration(start_time, end_time)
+                
+                lesson = {
+                    "subject": lesson_info["subject"],
+                    "day": day_of_week,
+                    "start_time": start_time,
+                    "duration": duration,
+                    "location": lesson_info.get("location", "Не указано"),
+                    "teacher": lesson_info.get("teacher", "Не указан"),
+                    "weeks": lesson_info.get("weeks", "all"),
+                    "type": lesson_info.get("type", "Занятие")
+                }
+                lessons.append(lesson)
+                debug_print(f"Добавлено занятие: {lesson['subject']} в {start_time}")
+    
+    debug_print(f"Всего извлечено {len(lessons)} занятий")
+    return lessons
+
+def parse_lesson_cell(cell_text):
+    """Парсит ячейку с информацией о занятии"""
+    if not cell_text or cell_text.strip() == '':
+        return None
+    
+    # Убираем лишние пробелы
+    text = ' '.join(cell_text.split())
+    
+    # Базовый парсинг формата "Предмет Аудитория Преподаватель"
+    parts = text.split()
+    
+    if len(parts) < 2:
+        return None
+    
+    lesson_info = {}
+    
+    # Первое слово обычно предмет
+    lesson_info["subject"] = parts[0]
+    
+    # Ищем аудиторию (обычно содержит буквы и цифры)
+    for part in parts[1:]:
+        if re.match(r'^[А-Яа-яA-Za-z]-?\d+', part):
+            lesson_info["location"] = part
+            break
+    
+    # Остальное - преподаватель
+    teacher_parts = []
+    for part in parts[1:]:
+        if part != lesson_info.get("location", ""):
+            teacher_parts.append(part)
+    
+    if teacher_parts:
+        lesson_info["teacher"] = ' '.join(teacher_parts)
+    
+    # Определяем тип занятия по названию
+    subject_lower = lesson_info["subject"].lower()
+    if any(word in subject_lower for word in ['лекция', 'лек']):
+        lesson_info["type"] = "Лекция"
+    elif any(word in subject_lower for word in ['практика', 'пр']):
+        lesson_info["type"] = "Практика"
+    elif any(word in subject_lower for word in ['лабораторная', 'лаб']):
+        lesson_info["type"] = "Лабораторная"
+    
+    return lesson_info
+
+def calculate_duration(start_time, end_time):
+    """Вычисляет продолжительность занятия в минутах"""
+    start = datetime.strptime(start_time, "%H:%M")
+    end = datetime.strptime(end_time, "%H:%M")
+    return int((end - start).total_seconds() / 60)
+
+def schedule_to_ical(lessons, group_name):
+    """Конвертирует расписание в iCal формат"""
+    calendar = Calendar()
+    
+    for lesson in lessons:
+        # Определяем день недели
+        lesson_date = START_DATE + timedelta(days=lesson["day"])
+        
+        # Парсим время начала
+        start_time = datetime.strptime(lesson["start_time"], "%H:%M").time()
+        start_datetime = datetime.combine(lesson_date.date(), start_time)
+        start_datetime = TIMEZONE.localize(start_datetime)
+        
+        # Добавляем продолжительность
+        end_datetime = start_datetime + timedelta(minutes=lesson["duration"])
+        
+        # Создаем событие
+        event = Event()
+        event.name = f"{lesson['subject']} ({lesson['type']}) - {group_name}"
+        event.begin = start_datetime
+        event.end = end_datetime
+        event.location = lesson["location"]
+        event.description = f"Преподаватель: {lesson['teacher']}\nТип: {lesson['type']}"
+        
+        # Настраиваем повторение для всех недель
+        if lesson["weeks"] == "all":
+            event.rrule = {"FREQ": "WEEKLY", "UNTIL": datetime(2026, 6, 30)}
+        
+        calendar.events.add(event)
+    
+    return calendar
+
+def calculate_schedule_hash(lessons):
+    """Вычисляет хеш расписания для отслеживания изменений"""
+    schedule_data = []
+    for lesson in lessons:
+        schedule_data.append(f"{lesson['subject']}_{lesson['day']}_{lesson['start_time']}_{lesson['location']}")
+    
+    schedule_str = ''.join(schedule_data)
+    return hashlib.md5(schedule_str.encode()).hexdigest()
 
 def send_telegram_notification(message, is_error=False):
     """Отправляет уведомление в Telegram"""
@@ -107,7 +328,6 @@ def send_telegram_notification(message, is_error=False):
             
         debug_print("Отправка уведомления в Telegram...")
         
-        # Используем requests вместо python-telegram-bot
         url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
         payload = {
             'chat_id': chat_id,
@@ -124,153 +344,65 @@ def send_telegram_notification(message, is_error=False):
     except Exception as e:
         debug_print(f"❌ Ошибка при отправке в Telegram: {e}")
 
-def create_realistic_schedule():
-    """Создает реалистичное расписание на основе типичной структуры МИСИС"""
-    debug_print("Создание реалистичного расписания...")
-    
-    calendar = Calendar()
-    
-    # Реалистичное расписание для ББИ-25-2 на основе типичного расписания МИСИС
-    lessons = [
-        # Понедельник
-        {"subject": "Математика (Лекционные)", "day": 0, "start_time": "09:00", "duration": 95, "location": "Л-550", "teacher": "Ногинова Л. Ю.", "weeks": "all"},
-        {"subject": "Математика (Практические)", "day": 0, "start_time": "12:40", "duration": 95, "location": "Л-629", "teacher": "Ногинова Л. Ю.", "weeks": "all"},
-        {"subject": "Введение в специальность (Практические)", "day": 0, "start_time": "14:30", "duration": 95, "location": "Б-1135", "teacher": "Попова К. Д.", "weeks": "all"},
-        
-        # Вторник  
-        {"subject": "История России (Лекционные)", "day": 1, "start_time": "10:50", "duration": 95, "location": "Л-746", "teacher": "Булатов И. А.", "weeks": "all"},
-        {"subject": "Программирование и алгоритмизация (Лабораторные)", "day": 1, "start_time": "12:40", "duration": 95, "location": "Л-850-УВЦ", "teacher": "Голубков М. В.", "weeks": "odd"},  # нечетные
-        {"subject": "Вычислительные машины, сети и системы (Лекционные)", "day": 1, "start_time": "14:30", "duration": 95, "location": "Л-556", "teacher": "Буянов С. И.", "weeks": "all"},
-        
-        # Среда
-        {"subject": "Физическая культура", "day": 2, "start_time": "09:00", "duration": 95, "location": "Спортивный комплекс", "teacher": "", "weeks": "all"},
-        {"subject": "Математика (Лекционные)", "day": 2, "start_time": "12:40", "duration": 95, "location": "Л-556", "teacher": "Ногинова Л. Ю.", "weeks": "all"},
-        {"subject": "Иностранный язык", "day": 2, "start_time": "14:30", "duration": 95, "location": "Каф. ИЯКТ", "teacher": "", "weeks": "all"},
-        
-        # Четверг
-        {"subject": "Иностранный язык", "day": 3, "start_time": "09:00", "duration": 95, "location": "Каф. ИЯКТ", "teacher": "", "weeks": "all"},
-        {"subject": "Введение в специальность (Лекционные)", "day": 3, "start_time": "10:50", "duration": 95, "location": "Б-434", "teacher": "Белых П. В.", "weeks": "all"},
-        {"subject": "Вычислительные машины, сети и системы (Лабораторные)", "day": 3, "start_time": "12:40", "duration": 95, "location": "Л-809-УВЦ", "teacher": "Буянов С. И.", "weeks": "even"},  # четные
-        
-        # Пятница
-        {"subject": "Основы российской государственности (Лекционные)", "day": 4, "start_time": "09:00", "duration": 95, "location": "А-308", "teacher": "Аристов А. В.", "weeks": "all"},
-        {"subject": "Программирование и алгоритмизация (Лекционные)", "day": 4, "start_time": "12:40", "duration": 95, "location": "Б-734", "teacher": "Андреева О. В.", "weeks": "all"},
-        {"subject": "Программирование и алгоритмизация (Лабораторные)", "day": 4, "start_time": "14:30", "duration": 95, "location": "Л-812-УВЦ", "teacher": "Куренкова Т. В.", "weeks": "odd"},  # нечетные
-    ]
-    
-    events_created = 0
-    
-    for lesson in lessons:
-        # Создаем события для каждой недели семестра (16 недель)
-        for week in range(16):
-            # Пропускаем события для четных/нечетных недель если нужно
-            if lesson["weeks"] == "odd" and week % 2 == 1:  # пропускаем четные недели
-                continue
-            if lesson["weeks"] == "even" and week % 2 == 0:  # пропускаем нечетные недели
-                continue
-            
-            event = Event()
-            event.name = lesson["subject"]
-            
-            # Вычисляем дату занятия (начальная дата + день недели + недели)
-            lesson_date = START_DATE + timedelta(days=lesson["day"] + (week * 7))
-            
-            # Парсим время
-            hour, minute = map(int, lesson["start_time"].split(":"))
-            event.begin = TIMEZONE.localize(datetime(
-                lesson_date.year, lesson_date.month, lesson_date.day, 
-                hour, minute
-            ))
-            event.end = event.begin + timedelta(minutes=lesson["duration"])
-            
-            event.location = lesson["location"]
-            
-            # Описание
-            description = f"Группа: {GROUP_NAME}"
-            if lesson["teacher"]:
-                description += f"\nПреподаватель: {lesson['teacher']}"
-            
-            # Добавляем информацию о неделях
-            week_type = "нечетная" if week % 2 == 0 else "четная"
-            description += f"\nНеделя: {week + 1} ({week_type})"
-            
-            event.description = description
-            
-            calendar.events.add(event)
-            events_created += 1
-    
-    debug_print(f"✅ Создано {events_created} событий")
-    return calendar
-
 def main():
-    debug_print("🚀 Запуск парсера расписания МИСИС...")
+    """Основная функция"""
+    debug_print("=== Начало обработки расписания ===")
     
-    # Получаем ссылку на расписание
+    # Получаем актуальную ссылку
     schedule_url = get_latest_schedule_url()
     if not schedule_url:
-        error_msg = "❌ Не удалось найти ссылку на расписание"
+        error_msg = "❌ Не удалось получить ссылку на расписание"
         debug_print(error_msg)
-        send_telegram_notification(error_msg)
+        send_telegram_notification(error_msg, is_error=True)
         return
-    
-    debug_print(f"📎 Найдена ссылка: {schedule_url}")
     
     # Скачиваем файл
     xls_content = download_schedule_file(schedule_url)
+    if not xls_content:
+        error_msg = "❌ Не удалось скачать файл расписания"
+        debug_print(error_msg)
+        send_telegram_notification(error_msg, is_error=True)
+        return
     
-    # Проверяем, изменился ли файл
-    current_hash = hashlib.md5(xls_content).hexdigest() if xls_content else "no_file"
-    previous_hash = None
+    # Парсим расписание
+    lessons = parse_xls_schedule(xls_content, GROUP_NAME)
+    if not lessons:
+        error_msg = "❌ Не удалось распарсить расписание"
+        debug_print(error_msg)
+        send_telegram_notification(error_msg, is_error=True)
+        return
     
-    try:
+    # Создаем iCal
+    calendar = schedule_to_ical(lessons, GROUP_NAME)
+    
+    # Сохраняем в файл
+    with open('schedule.ics', 'w', encoding='utf-8') as f:
+        f.writelines(calendar)
+    
+    # Вычисляем хеш текущего расписания
+    current_hash = calculate_schedule_hash(lessons)
+    
+    # Читаем предыдущий хеш
+    previous_hash = ""
+    if os.path.exists('last_hash.txt'):
         with open('last_hash.txt', 'r') as f:
             previous_hash = f.read().strip()
-        debug_print(f"📊 Предыдущий хэш: {previous_hash}")
-    except FileNotFoundError:
-        debug_print("📊 Файл last_hash.txt не найден, создаем новый")
     
-    debug_print(f"📊 Текущий хэш: {current_hash}")
-    
-    # Создаем расписание
-    ics_calendar = create_realistic_schedule()
-    
-    # Сохраняем ICS файл
-    with open('schedule.ics', 'w', encoding='utf-8') as f:
-        f.write(ics_calendar.serialize())
-    debug_print("✅ Файл schedule.ics создан")
-    
-    # Сохраняем хэш
-    with open('last_hash.txt', 'w') as f:
-        f.write(current_hash)
-    debug_print("✅ Файл last_hash.txt создан")
-    
-    # Отправляем уведомление
-    if current_hash != previous_hash or previous_hash is None:
-        success_msg = f"""✅ <b>Расписание обновлено!</b>
-
-🏫 <b>Группа:</b> {GROUP_NAME}
-📅 <b>Начало семестра:</b> {START_DATE.strftime('%d.%m.%Y')}
-📚 <b>Создано событий:</b> {len(ics_calendar.events)}
-🔗 <b>Источник:</b> {schedule_url}
-
-📅 <b>Расписание готово к использованию!</b>
-Добавьте в календарь ссылку:
-https://raw.githubusercontent.com/{os.getenv('GITHUB_REPOSITORY', 'username/repo')}/main/schedule.ics"""
+    # Проверяем изменения
+    if current_hash != previous_hash:
+        debug_print("✅ Обнаружены изменения в расписании")
         
-        send_telegram_notification(success_msg)
-        debug_print("📢 Уведомление об изменении отправлено")
+        # Сохраняем новый хеш
+        with open('last_hash.txt', 'w') as f:
+            f.write(current_hash)
+        
+        # Отправляем уведомление об изменениях
+        change_msg = f"📅 Расписание для {GROUP_NAME} обновлено!\n\nЗанятий: {len(lessons)}\nСсылка: {schedule_url}"
+        send_telegram_notification(change_msg)
     else:
-        debug_print("ℹ️ Расписание не изменилось")
+        debug_print("ℹ️ Изменений в расписании нет")
     
-    debug_print("🎉 Парсер завершил работу успешно!")
-    
-    # Выводим информацию о созданных событиях
-    print(f"\n📊 Статистика:")
-    print(f"   Событий создано: {len(ics_calendar.events)}")
-    print(f"   Группа: {GROUP_NAME}")
-    print(f"   Начало семестра: {START_DATE.strftime('%d.%m.%Y')}")
-    print(f"   Актуальное расписание от: 01.10.2025")
-    print(f"   Хэш файла: {current_hash}")
+    debug_print("=== Обработка завершена ===")
 
 if __name__ == "__main__":
     main()
