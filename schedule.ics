@@ -2,91 +2,19 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:ics.py - http://git.io/lLljaA
 BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Сидорова М.К.\nТип: Практика
-DTEND:20250904T091500Z
-LOCATION:А-315
-DTSTART:20250904T074000Z
-SUMMARY:Иностранный язык - ББИ-25-2
-UID:3e6f69ef-ee92-4736-9ab7-dcd9a19c7be7@3e6f.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Кузнецов П.Д.\nТип: Практика
-DTEND:20250904T145500Z
-LOCATION:Спортзал
-DTSTART:20250904T132000Z
-SUMMARY:Физкультура - ББИ-25-2
-UID:2e4d443a-043c-482c-a51d-ef664424d29b@2e4d.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Петрова С.И.\nТип: Лекция
-DTEND:20250903T073500Z
-LOCATION:Л-420
-DTSTART:20250903T060000Z
-SUMMARY:Физика (Лекция) - ББИ-25-2
-UID:9887e166-ff16-44fd-9cc2-0efce970b858@9887.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Ногинова Л.Ю.\nТип: Практика
-DTEND:20250901T111500Z
-LOCATION:Л-629
-DTSTART:20250901T094000Z
-SUMMARY:Математика (Практика) - ББИ-25-2
-UID:d350ce01-d2bb-492f-89b6-ed2710a9c7a6@d350.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Васильев А.А.\nТип: Лекция
-DTEND:20250905T111500Z
-LOCATION:Л-629
-DTSTART:20250905T094000Z
-SUMMARY:Алгоритмы и структуры данных - ББИ-25-2
-UID:37c63056-ccbf-4ae1-81f3-7b226c1d2f64@37c6.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Васильев А.А.\nТип: Практика
-DTEND:20250905T073500Z
-LOCATION:Б-1135
-DTSTART:20250905T060000Z
-SUMMARY:Информатика - ББИ-25-2
-UID:5eae88d2-3ae6-440f-a4b7-b74b665bc20f@5eae.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Попова К.Д.\nТип: Практика
-DTEND:20250901T125500Z
-LOCATION:Б-1135
-DTSTART:20250901T112000Z
-SUMMARY:Введение в специальность - ББИ-25-2
-UID:bc546f71-f465-41fa-8619-5b131830c619@bc54.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Иванов П.С.\nТип: Практика
-DTEND:20250902T125500Z
-LOCATION:Б-1135
-DTSTART:20250902T112000Z
-SUMMARY:Программирование - ББИ-25-2
-UID:0e30bc9d-e470-4652-a40b-f1289dd4c052@0e30.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Смирнов А.В.\nТип: Лекция
+DESCRIPTION:Преподаватель: Преподаватель\nТип: Практика
 DTEND:20250902T091500Z
-LOCATION:Л-550
+LOCATION:Б-1135
 DTSTART:20250902T074000Z
-SUMMARY:История России (Лекция) - ББИ-25-2
-UID:21c2317a-e80a-43c8-b64e-286173800dbd@21c2.org
+SUMMARY:Программирование - ББИ-25-2
+UID:4ec1b71d-8dc2-4262-8e12-51420a7a3dd0@4ec1.org
 END:VEVENT
 BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Ногинова Л.Ю.\nТип: Лекция
+DESCRIPTION:Преподаватель: Преподаватель\nТип: Лекция
 DTEND:20250901T073500Z
 LOCATION:Л-550
 DTSTART:20250901T060000Z
-SUMMARY:Математика (Лекция) - ББИ-25-2
-UID:08c590c6-455e-459d-b768-ff2cfd87ec74@08c5.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Петрова С.И.\nТип: Практика
-DTEND:20250903T111500Z
-LOCATION:Л-629
-DTSTART:20250903T094000Z
-SUMMARY:Физика (Практика) - ББИ-25-2
-UID:5568de82-8a59-449b-bfe6-99f00a5fc5d0@5568.org
+SUMMARY:Математика - ББИ-25-2
+UID:19b922e0-2872-4531-83a9-19c235fdd16a@19b9.org
 END:VEVENT
 END:VCALENDAR
