@@ -7,6 +7,7 @@ import pytz
 from datetime import datetime, timedelta
 import os
 import hashlib
+import json
 
 # Конфигурация
 GROUP_NAME = "ББИ-25-2"
@@ -27,6 +28,57 @@ LESSON_TIMES = {
 def debug_print(message):
     """Функция для отладочной печати"""
     print(f"🔍 {message}")
+
+def save_file_for_analysis(xls_content, sheet_data=None):
+    """Сохраняет файл и структуру для анализа"""
+    try:
+        # Сохраняем XLS файл
+        with open('temp_schedule.xls', 'wb') as f:
+            f.write(xls_content)
+        debug_print("✅ Файл сохранен как temp_schedule.xls")
+        
+        # Сохраняем структуру данных
+        if sheet_data:
+            with open('file_structure.json', 'w', encoding='utf-8') as f:
+                json.dump(sheet_data, f, ensure_ascii=False, indent=2)
+            debug_print("✅ Структура файла сохранена как file_structure.json")
+            
+        return True
+    except Exception as e:
+        debug_print(f"❌ Ошибка сохранения файлов: {e}")
+        return False
+
+def analyze_file_structure(sheet):
+    """Анализирует структуру файла и сохраняет информацию"""
+    debug_print("🔍 Анализ структуры файла...")
+    
+    structure_data = {
+        "dimensions": {"rows": sheet.nrows, "cols": sheet.ncols},
+        "first_10_rows": [],
+        "first_10_cols": []
+    }
+    
+    # Анализируем первые 10 строк
+    for row_idx in range(min(10, sheet.nrows)):
+        row_data = {}
+        for col_idx in range(min(10, sheet.ncols)):
+            cell_value = str(sheet.cell_value(row_idx, col_idx)).strip()
+            if cell_value and cell_value != 'nan':
+                row_data[f"col_{col_idx}"] = cell_value
+        if row_data:
+            structure_data["first_10_rows"].append({f"row_{row_idx}": row_data})
+    
+    # Анализируем первые 10 колонок более подробно
+    for col_idx in range(min(10, sheet.ncols)):
+        col_data = {}
+        for row_idx in range(min(20, sheet.nrows)):
+            cell_value = str(sheet.cell_value(row_idx, col_idx)).strip()
+            if cell_value and cell_value != 'nan':
+                col_data[f"row_{row_idx}"] = cell_value
+        if col_data:
+            structure_data["first_10_cols"].append({f"col_{col_idx}": col_data})
+    
+    return structure_data
 
 def get_latest_schedule_url():
     """Получает последнюю ссылку на расписание с сайта МИСИС"""
@@ -113,80 +165,90 @@ def parse_xls_schedule(xls_content, group_name):
         
         debug_print(f"✅ XLS файл открыт: {sheet.nrows} строк, {sheet.ncols} колонок")
         
-        # Ищем группу в файле
-        group_col = None
+        # Анализируем и сохраняем структуру файла
+        structure_data = analyze_file_structure(sheet)
+        save_file_for_analysis(xls_content, structure_data)
+        
+        # Выводим ключевую информацию о структуре
+        debug_print("=== СТРУКТУРА ФАЙЛА ===")
+        debug_print(f"Размер: {sheet.nrows} строк × {sheet.ncols} колонок")
+        
+        # Ищем группу во всем файле
+        group_positions = []
         for row_idx in range(sheet.nrows):
             for col_idx in range(sheet.ncols):
-                cell_value = str(sheet.cell_value(row_idx, col_idx))
+                cell_value = str(sheet.cell_value(row_idx, col_idx)).strip()
                 if group_name in cell_value:
-                    group_col = col_idx
-                    debug_print(f"✅ Группа найдена в строке {row_idx}, колонке {col_idx}")
-                    break
-            if group_col is not None:
-                break
+                    group_positions.append((row_idx, col_idx, cell_value))
+                    debug_print(f"✅ Группа найдена: строка {row_idx}, колонка {col_idx} = '{cell_value}'")
         
-        if group_col is None:
+        if not group_positions:
             debug_print("❌ Группа не найдена в файле")
             return []
         
-        # Ищем заголовок с днями недели (обычно в строке 1)
-        days_header_row = 1
-        debug_print(f"✅ Используем строку {days_header_row} как заголовок дней недели")
+        # Используем первую найденную позицию группы
+        group_row, group_col, group_cell = group_positions[0]
+        debug_print(f"🔍 Используем позицию: строка {group_row}, колонка {group_col}")
         
-        # Ищем номера пар в первом столбце
-        lessons_column = 0
-        debug_print(f"✅ Используем колонку {lessons_column} для номеров пар")
+        # Ищем номера пар в колонке 0
+        lesson_numbers = []
+        for row_idx in range(sheet.nrows):
+            cell_value = str(sheet.cell_value(row_idx, 0)).strip()
+            if cell_value.isdigit() and 1 <= int(cell_value) <= 7:
+                lesson_numbers.append((row_idx, int(cell_value)))
+                debug_print(f"🔍 Номер пары: строка {row_idx} = {cell_value}")
+        
+        if not lesson_numbers:
+            debug_print("❌ Не найдены номера пар в колонке 0")
+            return []
         
         # Извлекаем занятия
         lessons = []
-        current_day = -1
-        
-        for row_idx in range(2, sheet.nrows):  # Начинаем с строки 2 (после заголовков)
-            # Проверяем ячейку с номером пары
-            lesson_cell = str(sheet.cell_value(row_idx, lessons_column)).strip()
-            
-            # Если это номер пары (1, 2, 3...)
-            if lesson_cell and lesson_cell.isdigit():
-                lesson_number = int(lesson_cell)
-                if lesson_number in LESSON_TIMES:
-                    start_time, end_time = LESSON_TIMES[lesson_number]
-                    duration = calculate_duration(start_time, end_time)
-                    
-                    # Получаем информацию о занятии
-                    lesson_cell_value = str(sheet.cell_value(row_idx, group_col)).strip()
-                    
-                    if lesson_cell_value and lesson_cell_value != 'nan' and lesson_cell_value != '':
-                        lesson_info = parse_lesson_cell_detailed(lesson_cell_value)
-                        if lesson_info:
-                            # Определяем день недели по строке дня
-                            day_cell = str(sheet.cell_value(days_header_row, group_col)).strip()
-                            day_of_week = parse_day_of_week(day_cell, row_idx, days_header_row)
-                            
-                            lesson = {
-                                "subject": lesson_info["subject"],
-                                "day": day_of_week,
-                                "start_time": start_time,
-                                "duration": duration,
-                                "location": lesson_info.get("location", "Не указано"),
-                                "teacher": lesson_info.get("teacher", "Не указан"),
-                                "weeks": "all",
-                                "type": lesson_info.get("type", "Занятие")
-                            }
-                            lessons.append(lesson)
-                            debug_print(f"✅ {lesson['subject']} ({lesson['type']}) - {start_time} (день {day_of_week})")
+        for lesson_row, lesson_number in lesson_numbers:
+            if lesson_number in LESSON_TIMES:
+                start_time, end_time = LESSON_TIMES[lesson_number]
+                duration = calculate_duration(start_time, end_time)
+                
+                # Получаем информацию о занятии из колонки группы
+                lesson_cell_value = str(sheet.cell_value(lesson_row, group_col)).strip()
+                
+                if lesson_cell_value and lesson_cell_value != 'nan' and lesson_cell_value != '':
+                    lesson_info = parse_lesson_cell_detailed(lesson_cell_value)
+                    if lesson_info and lesson_info["subject"] != "1":  # Игнорируем ячейки только с цифрой 1
+                        # Определяем день недели по относительной позиции
+                        day_of_week = determine_day_of_week(lesson_row, group_row, lesson_numbers)
+                        
+                        lesson = {
+                            "subject": lesson_info["subject"],
+                            "day": day_of_week,
+                            "start_time": start_time,
+                            "duration": duration,
+                            "location": lesson_info.get("location", "Не указано"),
+                            "teacher": lesson_info.get("teacher", "Не указан"),
+                            "weeks": "all",
+                            "type": lesson_info.get("type", "Занятие")
+                        }
+                        lessons.append(lesson)
+                        debug_print(f"✅ {lesson['subject']} ({lesson['type']}) - {start_time} (день {day_of_week})")
         
         debug_print(f"✅ Всего извлечено {len(lessons)} занятий")
         return lessons
         
     except Exception as e:
         debug_print(f"❌ Ошибка при парсинге XLS: {e}")
+        import traceback
+        debug_print(f"Детали ошибки: {traceback.format_exc()}")
         return []
 
-def parse_day_of_week(day_cell, row_idx, header_row):
-    """Определяет день недели на основе структуры файла"""
-    # Простая логика - каждая следующая группа строк это новый день
-    day_offset = (row_idx - header_row - 2) // 7  # 7 пар в день
-    return day_offset % 7
+def determine_day_of_week(lesson_row, group_row, lesson_numbers):
+    """Определяет день недели на основе позиции занятия"""
+    # Находим индекс текущего занятия в списке пар
+    lesson_indices = [row for row, num in lesson_numbers]
+    current_index = lesson_indices.index(lesson_row)
+    
+    # Предполагаем, что 7 пар = 1 день
+    day_of_week = current_index // 7
+    return day_of_week % 7  # Ограничиваем 0-6 (пн-вс)
 
 def parse_lesson_cell_detailed(cell_text):
     """Детальный парсинг ячейки с сохранением всей информации"""
@@ -194,7 +256,7 @@ def parse_lesson_cell_detailed(cell_text):
         return None
     
     text = cell_text.strip()
-    debug_print(f"🔍 Парсинг: '{text}'")
+    debug_print(f"🔍 Парсинг ячейки: '{text}'")
     
     lesson_info = {}
     
@@ -214,22 +276,28 @@ def parse_lesson_cell_detailed(cell_text):
     
     # Разделяем предмет и преподавателя
     parts = subject.split()
-    if len(parts) >= 3:  # Есть достаточно частей для преподавателя
-        # Предполагаем, что преподаватель в конце (Фамилия И. О.)
-        if re.match(r'^[А-ЯЁ][а-яё]*\s[А-ЯЁ]\.[А-ЯЁ]\.$', ' '.join(parts[-2:])):
-            lesson_info["teacher"] = ' '.join(parts[-2:])
-            lesson_info["subject"] = ' '.join(parts[:-2])
-        else:
-            lesson_info["subject"] = subject
-            lesson_info["teacher"] = "Не указан"
-    else:
+    
+    # Ищем преподавателя в формате "Фамилия И.О."
+    teacher_found = False
+    for i in range(len(parts) - 1):
+        if (len(parts[i]) >= 2 and 
+            re.match(r'^[А-ЯЁ][а-яё]*$', parts[i]) and 
+            re.match(r'^[А-ЯЁ]\.[А-ЯЁ]\.$', parts[i+1])):
+            lesson_info["teacher"] = f"{parts[i]} {parts[i+1]}"
+            lesson_info["subject"] = ' '.join(parts[:i])
+            teacher_found = True
+            break
+    
+    if not teacher_found:
         lesson_info["subject"] = subject
         lesson_info["teacher"] = "Не указан"
     
-    # Ищем аудиторию в тексте (если есть)
+    # Ищем аудиторию в тексте
     location_match = re.search(r'[А-Яа-яA-Za-z]-?\d+[А-Яа-яA-Za-z]?', text)
     if location_match:
         lesson_info["location"] = location_match.group()
+    else:
+        lesson_info["location"] = "Не указано"
     
     return lesson_info
 
@@ -319,7 +387,9 @@ def main():
     
     lessons = parse_xls_schedule(xls_content, GROUP_NAME)
     if not lessons:
-        debug_print("❌ Не удалось распарсить расписание")
+        error_msg = "❌ Не удалось распарсить расписание"
+        debug_print(error_msg)
+        send_telegram_notification(error_msg, is_error=True)
         return
     
     calendar = schedule_to_ical(lessons, GROUP_NAME)
