@@ -2,139 +2,139 @@ BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:ics.py - http://git.io/lLljaA
 BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Практика\nАудитория: Не указано
-DTEND:20250902T111500Z
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Практика\nАудитория: Не указано
+DTEND:20250903T073500Z
 LOCATION:Не указано
-DTSTART:20250902T094000Z
-SUMMARY:История России \nЗубарев И. Ю. (Практика) - ББИ-25-2
-UID:167c8e54-81e3-4360-8372-9acbda9594e2@167c.org
+DTSTART:20250903T060000Z
+SUMMARY:Иностранный язык (Практика)
+UID:786f858a-b8a7-413b-8966-4ca92c87587a@786f.org
 END:VEVENT
 BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Практика\nАудитория: Не указано
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Практика\nАудитория: Не указано
 DTEND:20250902T125500Z
 LOCATION:Не указано
 DTSTART:20250902T112000Z
-SUMMARY:Математика \nВладимиров А. А. (Практика) - ББИ-25-2
-UID:9fc642a3-c9ce-4149-ae9e-7d056cb22462@9fc6.org
+SUMMARY:Математика  Казанцев А. В. (Практика)
+UID:43af4452-bc47-4a28-82bb-3980463ffe73@43af.org
 END:VEVENT
 BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
-DTEND:20250906T073500Z
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Практика\nАудитория: Не указано
+DTEND:20250901T125500Z
 LOCATION:Не указано
-DTSTART:20250906T060000Z
-SUMMARY:Вычислительные машины\, сети и системы \nБуянов С. И. (Лекция) - ББИ-25-2
-UID:8b108d13-bf02-4543-a404-84fda7b79fca@8b10.org
+DTSTART:20250901T112000Z
+SUMMARY:Математика  Владимиров А. А. (Практика)
+UID:49e196e6-0b95-4f99-a185-101b60a79255@49e1.org
 END:VEVENT
 BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Практика\nАудитория: Не указано
-DTEND:20250903T111500Z
-LOCATION:Не указано
-DTSTART:20250903T094000Z
-SUMMARY:Введение в специальность \nСтепанов Н. А. (Практика) - ББИ-25-2
-UID:1e50d7cc-e0d5-414e-8028-27bbb4edd3bc@1e50.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
-DTEND:20250904T073500Z
-LOCATION:Не указано
-DTSTART:20250904T060000Z
-SUMMARY:Введение в специальность \nБелых П. В. (Лекция) - ББИ-25-2
-UID:b2963691-0331-4983-b5f4-46e0df7731be@b296.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Практика\nАудитория: Не указано
-DTEND:20250904T091500Z
-LOCATION:Не указано
-DTSTART:20250904T074000Z
-SUMMARY:Физическая культура (Практика) - ББИ-25-2
-UID:118248db-6ee8-4659-b55f-ca0b038137c1@1182.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Практика\nАудитория: Не указано
-DTEND:20250905T073500Z
-LOCATION:Не указано
-DTSTART:20250905T060000Z
-SUMMARY:Иностранный язык (Практика) - ББИ-25-2
-UID:add5d074-bf27-4691-b5ce-a94607d33e9a@add5.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Практика\nАудитория: Не указано
-DTEND:20250905T111500Z
-LOCATION:Не указано
-DTSTART:20250905T094000Z
-SUMMARY:Математика \nВладимиров А. А. (Практика) - ББИ-25-2
-UID:66974e35-9e96-46e7-9d31-f29e85be019a@6697.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
-DTEND:20250906T111500Z
-LOCATION:Не указано
-DTSTART:20250906T094000Z
-SUMMARY:Программирование и алгоритмизация \nАндреева О. В. (Лекция) - ББИ-25-2
-UID:f57fd752-0a32-4a30-bf77-34d7049a69af@f57f.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Практика\nАудитория: Не указано
-DTEND:20250903T125500Z
-LOCATION:Не указано
-DTSTART:20250903T112000Z
-SUMMARY:Основы российской государственности \nБакирова Д. М. (Практика) - ББИ-25-2
-UID:aaf779ce-3999-49d5-b784-1e04e99c4bda@aaf7.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
-DTEND:20250905T125500Z
-LOCATION:Не указано
-DTSTART:20250905T112000Z
-SUMMARY:Введение в специальность \nБелых П. В. (Лекция) - ББИ-25-2
-UID:cc9b0af3-13f9-48c9-81ae-77051e3004b2@cc9b.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
 DTEND:20250903T091500Z
 LOCATION:Не указано
 DTSTART:20250903T074000Z
-SUMMARY:История России \nБулатов И. А. (Лекция) - ББИ-25-2
-UID:33fdaff7-0b77-474d-9bd5-d676f9d2da4a@33fd.org
+SUMMARY:История России  Булатов И. А. (Лекция)
+UID:068a535e-8f2c-4663-b48d-3caed4677200@068a.org
 END:VEVENT
 BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Лабораторная\nАудитория: Не указано
-DTEND:20250906T091500Z
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
+DTEND:20250904T073500Z
 LOCATION:Не указано
-DTSTART:20250906T074000Z
-SUMMARY:1 п.г. Программирование и алгоритмизация \nАндреева О. В. (Лабораторная) - ББИ-25-2
-UID:00fcf0b1-615a-4946-b9a0-e3f69842ac5f@00fc.org
+DTSTART:20250904T060000Z
+SUMMARY:Вычислительные машины\, сети и системы  Буянов С. И. (Лекция)
+UID:fa2af6da-82f0-437f-8689-42238d4da599@fa2a.org
 END:VEVENT
 BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Практика\nАудитория: Не указано
-DTEND:20250904T125500Z
-LOCATION:Не указано
-DTSTART:20250904T112000Z
-SUMMARY:Математика \nКазанцев А. В. (Практика) - ББИ-25-2
-UID:95da751c-5b6f-40f3-a5da-75b934f1a483@95da.org
-END:VEVENT
-BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Практика\nАудитория: Не указано
 DTEND:20250902T091500Z
 LOCATION:Не указано
 DTSTART:20250902T074000Z
-SUMMARY:Математика \nНогинова Л. Ю. (Лекция) - ББИ-25-2
-UID:879cd3be-6a78-4bda-be85-5f7178944216@879c.org
+SUMMARY:Физическая культура (Практика)
+UID:56d45a1e-d73f-49b2-9c45-1dd26d003434@56d4.org
 END:VEVENT
 BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
-DTEND:20250905T091500Z
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
+DTEND:20250901T091500Z
 LOCATION:Не указано
-DTSTART:20250905T074000Z
-SUMMARY:История России \nБулатов И. А. (Лекция) - ББИ-25-2
-UID:b12ac452-f3ba-4b33-abab-53da5156211d@b12a.org
+DTSTART:20250901T074000Z
+SUMMARY:История России  Булатов И. А. (Лекция)
+UID:4e0dcecd-65b4-4c61-af94-248ec85be469@4e0d.org
 END:VEVENT
 BEGIN:VEVENT
-DESCRIPTION:Преподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Практика\nАудитория: Не указано
+DTEND:20250901T111500Z
+LOCATION:Не указано
+DTSTART:20250901T094000Z
+SUMMARY:Введение в специальность  Степанов Н. А. (Практика)
+UID:46d73bc4-fce3-455b-9e80-b0ef9fc426fb@46d7.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Практика\nАудитория: Не указано
+DTEND:20250901T111500Z
+LOCATION:Не указано
+DTSTART:20250901T094000Z
+SUMMARY:История России  Зубарев И. Ю. (Практика)
+UID:49b0c8a8-40c9-4c91-ae14-90b9a097de04@49b0.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
+DTEND:20250902T073500Z
+LOCATION:Не указано
+DTSTART:20250902T060000Z
+SUMMARY:Введение в специальность  Белых П. В. (Лекция)
+UID:a7ea7d38-98fa-4e0c-98dc-d7914d93a70d@a7ea.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Практика\nАудитория: Не указано
+DTEND:20250903T111500Z
+LOCATION:Не указано
+DTSTART:20250903T094000Z
+SUMMARY:Математика  Владимиров А. А. (Практика)
+UID:577a8c2b-fffa-4c64-bd61-df1fc75455ff@577a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
+DTEND:20250903T125500Z
+LOCATION:Не указано
+DTSTART:20250903T112000Z
+SUMMARY:Введение в специальность  Белых П. В. (Лекция)
+UID:5a58be8e-dfae-4b24-b373-f88b9570cb68@5a58.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Практика\nАудитория: Не указано
+DTEND:20250901T125500Z
+LOCATION:Не указано
+DTSTART:20250901T112000Z
+SUMMARY:Основы российской государственности  Бакирова Д. М. (Практика)
+UID:430b926f-cce0-4e46-96ce-9d5c502ce0ad@430b.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Лабораторная\nАудитория: Не указано
+DTEND:20250904T091500Z
+LOCATION:Не указано
+DTSTART:20250904T074000Z
+SUMMARY:1 п.г. Программирование и алгоритмизация  Андреева О. В. (Лабораторная)
+UID:be541fe8-abe9-4129-aae1-e2fd380d779c@be54.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
+DTEND:20250901T091500Z
+LOCATION:Не указано
+DTSTART:20250901T074000Z
+SUMMARY:Математика  Ногинова Л. Ю. (Лекция)
+UID:919aa87d-825c-4e79-9651-678d2db83676@919a.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
 DTEND:20250904T111500Z
 LOCATION:Не указано
 DTSTART:20250904T094000Z
-SUMMARY:Математика \nНогинова Л. Ю. (Лекция) - ББИ-25-2
-UID:a901d3d6-802f-493d-9eb8-e38349ea0ef7@a901.org
+SUMMARY:Программирование и алгоритмизация  Андреева О. В. (Лекция)
+UID:f129a919-7163-43c1-8b4a-b4d16d34d851@f129.org
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Группа: ББИ-25-2\nПреподаватель: Не указан\nТип: Лекция\nАудитория: Не указано
+DTEND:20250902T111500Z
+LOCATION:Не указано
+DTSTART:20250902T094000Z
+SUMMARY:Математика  Ногинова Л. Ю. (Лекция)
+UID:843a300c-1930-45a7-81e3-b0ef16ed18d0@843a.org
 END:VEVENT
 END:VCALENDAR
