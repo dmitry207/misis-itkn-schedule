@@ -7,6 +7,7 @@ import pytz
 from datetime import datetime, timedelta
 import os
 import hashlib
+import csv
 
 # Конфигурация
 GROUP_NAME = "ББИ-25-2"
@@ -116,10 +117,10 @@ def parse_xls_schedule(xls_content, group_name):
         # Сохраняем файл для анализа
         with open('temp_schedule.xls', 'wb') as f:
             f.write(xls_content)
-        debug_print("Файл сохранен как temp_schedule.xls для анализа")
+        debug_print("Файл сохранен как temp_schedule.xls")
         
         # Пробуем разные методы парсинга
-        lessons = parse_xls_with_pandas(xls_content, group_name)
+        lessons = parse_xls_simple(xls_content, group_name)
         if lessons:
             return lessons
             
@@ -130,115 +131,92 @@ def parse_xls_schedule(xls_content, group_name):
         debug_print(f"❌ Ошибка при парсинге XLS: {e}")
         return []
 
-def parse_xls_with_pandas(xls_content, group_name):
-    """Парсит XLS используя pandas"""
+def parse_xls_simple(xls_content, group_name):
+    """Простой парсинг XLS без pandas"""
     try:
-        import pandas as pd
-        from io import BytesIO
+        debug_print("Попытка простого парсинга XLS...")
         
-        debug_print("Попытка парсинга с pandas...")
-        xls_file = BytesIO(xls_content)
-        
-        # Пробуем разные движки
-        engines = ['openpyxl', 'xlrd']
-        df = None
-        
-        for engine in engines:
-            try:
-                df = pd.read_excel(xls_file, engine=engine, header=None)
-                debug_print(f"✅ Файл прочитан с движком {engine}, размер: {df.shape}")
-                break
-            except Exception as e:
-                debug_print(f"❌ Движок {engine} не сработал: {e}")
-                continue
-        
-        if df is None:
-            debug_print("❌ Не удалось прочитать файл ни одним движком")
-            return []
-        
-        # Анализируем структуру файла
-        debug_print("Анализ структуры файла...")
-        
-        # Ищем строку с нашей группой
-        group_row, group_col = find_group_in_dataframe(df, group_name)
-        if group_row is None or group_col is None:
-            debug_print(f"❌ Группа {group_name} не найдена в файле")
-            return []
-        
-        debug_print(f"✅ Группа найдена в строке {group_row}, колонке {group_col}")
-        
-        # Ищем заголовок с номерами пар
-        header_row = find_header_row(df)
-        if header_row is None:
-            debug_print("❌ Не найдена строка с номерами пар")
-            return []
-        
-        debug_print(f"✅ Заголовок найден в строке {header_row}")
-        
-        # Извлекаем занятия
-        lessons = extract_lessons_from_dataframe(df, group_col, header_row, group_row)
-        debug_print(f"✅ Извлечено {len(lessons)} занятий")
-        return lessons
-        
-    except ImportError:
-        debug_print("❌ pandas не установлен")
-        return []
-    except Exception as e:
-        debug_print(f"❌ Ошибка парсинга с pandas: {e}")
-        return []
-
-def find_group_in_dataframe(df, group_name):
-    """Находит группу в DataFrame"""
-    for row_idx in range(len(df)):
-        for col_idx in range(len(df.columns)):
-            cell_value = str(df.iloc[row_idx, col_idx])
-            if group_name in cell_value:
-                return row_idx, col_idx
-    return None, None
-
-def find_header_row(df):
-    """Находит строку с номерами пар"""
-    for row_idx in range(len(df)):
-        for col_idx in range(len(df.columns)):
-            cell_value = str(df.iloc[row_idx, col_idx])
-            if any(str(i) in cell_value for i in range(1, 8)):
-                return row_idx
-    return None
-
-def extract_lessons_from_dataframe(df, group_col, header_row, group_row):
-    """Извлекает занятия из DataFrame"""
-    lessons = []
-    
-    # Проходим по строкам после заголовка
-    for row_idx in range(header_row + 1, min(header_row + 50, len(df))):  # Ограничиваем поиск
-        if row_idx >= len(df):
-            break
+        # Пробуем использовать xlrd напрямую
+        try:
+            import xlrd
+            workbook = xlrd.open_workbook(file_contents=xls_content)
+            sheet = workbook.sheet_by_index(0)
             
-        cell_value = str(df.iloc[row_idx, group_col])
-        if cell_value and cell_value.strip() and cell_value != 'nan':
-            lesson_info = parse_lesson_cell(cell_value)
-            if lesson_info:
-                # Определяем день и номер пары
-                day_of_week, lesson_number = calculate_day_and_lesson(row_idx, header_row)
+            debug_print(f"✅ XLS файл открыт: {sheet.nrows} строк, {sheet.ncols} колонок")
+            
+            # Ищем группу в файле
+            group_col = None
+            group_row = None
+            
+            for row_idx in range(sheet.nrows):
+                for col_idx in range(sheet.ncols):
+                    cell_value = str(sheet.cell_value(row_idx, col_idx))
+                    if group_name in cell_value:
+                        group_col = col_idx
+                        group_row = row_idx
+                        debug_print(f"✅ Группа найдена в строке {row_idx}, колонке {col_idx}")
+                        break
+                if group_col is not None:
+                    break
+            
+            if group_col is None:
+                debug_print("❌ Группа не найдена в файле")
+                return []
+            
+            # Ищем заголовок с номерами пар
+            header_row = None
+            for row_idx in range(sheet.nrows):
+                for col_idx in range(sheet.ncols):
+                    cell_value = str(sheet.cell_value(row_idx, col_idx))
+                    if any(str(i) in cell_value for i in range(1, 8)):
+                        header_row = row_idx
+                        debug_print(f"✅ Заголовок найден в строке {row_idx}")
+                        break
+                if header_row is not None:
+                    break
+            
+            if header_row is None:
+                debug_print("❌ Заголовок не найден")
+                return []
+            
+            # Извлекаем занятия
+            lessons = []
+            for row_idx in range(header_row + 1, min(header_row + 50, sheet.nrows)):
+                cell_value = str(sheet.cell_value(row_idx, group_col)).strip()
                 
-                if lesson_number in LESSON_TIMES:
-                    start_time, end_time = LESSON_TIMES[lesson_number]
-                    duration = calculate_duration(start_time, end_time)
-                    
-                    lesson = {
-                        "subject": lesson_info["subject"],
-                        "day": day_of_week,
-                        "start_time": start_time,
-                        "duration": duration,
-                        "location": lesson_info.get("location", "Не указано"),
-                        "teacher": lesson_info.get("teacher", "Не указан"),
-                        "weeks": "all",
-                        "type": lesson_info.get("type", "Занятие")
-                    }
-                    lessons.append(lesson)
-                    debug_print(f"✅ Добавлено: {lesson['subject']} в {start_time}")
-    
-    return lessons
+                if cell_value and cell_value != 'nan' and cell_value != '':
+                    lesson_info = parse_lesson_cell(cell_value)
+                    if lesson_info:
+                        # Определяем день и номер пары
+                        day_of_week, lesson_number = calculate_day_and_lesson(row_idx, header_row)
+                        
+                        if lesson_number in LESSON_TIMES:
+                            start_time, end_time = LESSON_TIMES[lesson_number]
+                            duration = calculate_duration(start_time, end_time)
+                            
+                            lesson = {
+                                "subject": lesson_info["subject"],
+                                "day": day_of_week,
+                                "start_time": start_time,
+                                "duration": duration,
+                                "location": lesson_info.get("location", "Не указано"),
+                                "teacher": lesson_info.get("teacher", "Не указан"),
+                                "weeks": "all",
+                                "type": lesson_info.get("type", "Занятие")
+                            }
+                            lessons.append(lesson)
+                            debug_print(f"✅ Добавлено: {lesson['subject']} в {start_time} (день {day_of_week}, пара {lesson_number})")
+            
+            debug_print(f"✅ Всего извлечено {len(lessons)} занятий")
+            return lessons
+            
+        except ImportError:
+            debug_print("❌ xlrd не установлен")
+            return []
+            
+    except Exception as e:
+        debug_print(f"❌ Ошибка простого парсинга: {e}")
+        return []
 
 def calculate_day_and_lesson(row_idx, header_row):
     """Вычисляет день недели и номер пары по позиции строки"""
@@ -254,12 +232,12 @@ def parse_lesson_cell(cell_text):
     
     # Убираем лишние пробелы
     text = ' '.join(cell_text.split())
-    debug_print(f"Парсинг ячейки: {text}")
+    debug_print(f"Парсинг ячейки: '{text}'")
     
     # Простой парсинг - предполагаем формат "Предмет Аудитория Преподаватель"
     parts = text.split()
     
-    if len(parts) < 2:
+    if len(parts) < 1:
         return None
     
     lesson_info = {"subject": parts[0]}
@@ -417,7 +395,8 @@ def main():
             f.write(current_hash)
         
         # Отправляем уведомление об изменениях
-        change_msg = f"📅 Расписание для {GROUP_NAME} обновлено!\n\nЗанятий: {len(lessons)}\nСсылка: {schedule_url}"
+        source = "реальный XLS файл" if lessons != create_realistic_schedule() else "тестовое расписание"
+        change_msg = f"📅 Расписание для {GROUP_NAME} обновлено!\n\nЗанятий: {len(lessons)}\nИсточник: {source}\nСсылка: {schedule_url}"
         send_telegram_notification(change_msg)
     else:
         debug_print("ℹ️ Изменений в расписании нет")
